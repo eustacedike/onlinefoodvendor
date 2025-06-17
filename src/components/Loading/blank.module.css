@@ -1,0 +1,19 @@
+.blankList {
+    /* border: 2px solid red; */
+    height: 150px;
+    width: 100%;
+    font-family: var(--primary-font);
+
+    text-align: center;
+    padding: 0px 6vw;
+}
+
+.blankList img {
+    width: 20%;
+    height: auto;
+    margin: 15px auto;
+}
+
+.blankList h2{
+    font-size: var(--h3-font);
+}

@@ -1,0 +1,148 @@
+
+
+
+
+
+.hero {
+    
+    /* border: 2px solid red; */
+    display: flex;
+    /* justify-content: space-between; */
+    /* padding: 18px 2%; */
+    /* align-items: center; */
+    /* font-family: var(--font-geist-mono); */
+    height: 400px;
+    width: 100%;
+    margin-bottom: 45px;
+    
+  }
+
+  .heroContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    width: 60%;
+    height: 100%;
+    /* text-align: center; */
+    /* border: 2px solid red; */
+  }
+
+  .heroContent h1 {
+    font-size: var(--h1-font);
+    font-weight: 700;
+    color: var(--secondary-color);
+    font-family: var(--secondary-font);
+    margin: 1.5rem;
+  }
+
+  .heroContent p {
+    font-size: var(--p-font);
+    color: var(--foreground);
+    font-family: var(--primary-font);
+    margin: 1.5rem;
+  }
+
+  .heroButton {
+    background-color: var(--primary-color);
+    color: white;
+    border: 1px solid transparent;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    font-family: var(--primary-font);
+    cursor: pointer;
+    border-radius: 4px;
+    width: fit-content;
+    margin: 1.5rem;
+    transition: 600ms ease-in-out;
+
+    /* transition: background-color 0.3s ease; */
+  }
+
+  .heroButton:hover {
+    box-shadow:  1px 1px 5px 1px var(--primary-color);
+    scale: 1.05;
+}
+
+
+  .heroImage {
+    border-radius: 12px;
+    overflow: hidden;
+    width: 36%;
+    max-width: 600px;
+    /* border: 2px solid blue; */
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+  }
+  
+  .heroImage img {
+    object-fit: contain;
+    /* width: 100%; */
+    height: auto;
+  }
+
+  @media (max-width: 850px) {
+ 
+    .heroContent {
+      width: 46%;
+     
+
+    }
+    
+    .heroImage {
+      width: 46%;
+      max-width: unset;
+    }
+    
+    }
+
+  @media (max-width: 770px) {
+ 
+.hero {
+    
+  flex-direction: column;
+  /* display: flex; */
+  height: auto;
+  width: 100%;
+  margin-bottom: 45px;
+  /* overflow: visible; */
+  
+}
+
+.heroContent {
+  width: 100%;
+
+
+}
+
+.heroImage {
+  width: 100%;
+  max-width: unset;
+  height: 300px;
+  /* border: 2px solid blue; */
+}
+
+.heroImage img {
+  object-fit: contain;
+
+  /* width: 100%; */
+  /* height: 60px; */
+}
+
+.heroContent h1 {
+  margin: 1rem;
+}
+
+.heroContent p {
+  margin: 1rem;
+}
+
+}
+
+@media (max-width: 560px) {
+
+  .heroContent {
+align-items: center;
+    text-align: center;
+  }
+
+}
