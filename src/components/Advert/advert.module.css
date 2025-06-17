@@ -1,0 +1,41 @@
+
+
+
+.AdWrapper {
+    /* height: 300px; */
+    /* border: 2px solid red; */
+  /* max-width: 100%; */
+  position: relative;
+  margin: 30px auto;
+  /* height: 30vh; */
+  /* width: auto; */
+  display: flex;
+  justify-content: center;
+
+}
+
+.AdBanner {
+    /* width: 100%; */
+    height: 400px;
+    width: auto;
+    margin: 0 auto;
+
+}
+
+@media (max-width: 600px) {
+ 
+    .AdWrapper {
+      max-width: 100%;
+  margin: 60px auto;
+    
+    }
+
+    .AdBanner {
+        width: 100%;
+        height: auto;
+        /* width: auto;
+        margin: 0 auto; */
+    
+    }
+ 
+    }

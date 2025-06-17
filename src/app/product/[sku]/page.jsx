@@ -18,7 +18,7 @@ export default function ProductPage() {
   // Ensure comparison is valid (string === string)
   const product = products.find(p => p.sku === sku);
 
-  console.log(products)
+//   console.log(products)
   
 
  

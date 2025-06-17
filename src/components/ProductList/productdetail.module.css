@@ -151,6 +151,9 @@
     font-size: var(--card-h-font);
     border-radius: 6px;
     cursor: pointer;
+    font-family: var(--primary-font);
+
+    font-weight: 700;
 }
 
 .quantity span {
@@ -158,6 +161,13 @@
     font-weight: 700;
     /* color: var(--primary-color); */
 }
+
+/* .goTo {
+    border-radius: 8px;
+background: linear-gradient(145deg, #ff8c20, #e4761b);
+box-shadow:  8px 8px 16px #d76f1a,
+             -8px -8px 16px #ff9723;
+} */
 
 
 @media (max-width: 900px) {

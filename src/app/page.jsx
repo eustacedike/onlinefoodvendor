@@ -9,11 +9,13 @@ import ProductList from "@/components/ProductList/ProductList";
 
 import { useProductContext } from '@/context/ProductContext';
 import DataFetch from "@/context/datafetch";
+import Advert from "@/components/Advert/Advert";
 
 import { FaLeaf } from "react-icons/fa";
 import { IoFastFood } from "react-icons/io5";
 
-import bannerImg from "@/public/images/banner1.png"
+import bannerImg from "@/public/images/banner1.png";
+import advertImg from "@/public/images/advert.png";
 
 export default function Home() {
 
@@ -27,6 +29,7 @@ export default function Home() {
 
   return (
     <div className={styles.page}>
+      
       <main className={styles.main}>
         <Hero />
         <DataFetch />
@@ -50,7 +53,10 @@ export default function Home() {
         </div>
 
         <ProductList products={filteredProducts.slice(0, 4)} layout="flex" />
-        <Link href="/menu" className="titleButton">See More</Link>
+        {/* <Link href="/menu" className="titleButton">See More</Link> */}
+
+
+        <Advert AdBanner={advertImg}/>
 
         <div className={styles.banner}>
           <Image
@@ -69,6 +75,9 @@ export default function Home() {
             <Link href="/menu" className={styles.bannerButton}>Order Now</Link>
           </div>
         </div>
+
+
+     
       </main>
 
     </div>

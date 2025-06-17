@@ -24,11 +24,16 @@ export default function BlankPage({content, imgSrc}) {
       <LoadingSpinner />
     ) : (
       <div className={styles.blankList}>
-        <Image 
+        {/* <Image 
         style={{display: imgSrc === null ? 'none' : 'block'}}
                 src={imgSrc}
                 alt="No products available"
-            />
+            /> */}
+            {imgSrc === null ? null :
+            <Image 
+                src={imgSrc}
+                alt="No products available"
+            />}
         <h2>{content}</h2>
         {/* <Link href="/" className={styles.backButton}>Go Back to Home</Link> */}
       </div>

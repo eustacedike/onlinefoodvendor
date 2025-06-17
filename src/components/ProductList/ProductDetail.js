@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import styles from './productdetail.module.css';
 import { useState } from 'react';
+import Link from 'next/link';
 import soldOutImage from '../../public/images/soldout.png'; // Adjust the path as necessary
 import { useCartContext } from '@/context/CartContext'; // Adjust the path as necessary
 
@@ -45,7 +46,7 @@ export default function ProductDetail({ sku, imageUrl, name, description, price,
                     <button onClick={() => decreaseQuantity(sku)} disabled={quantity === 0}>−</button>
                     <span>{quantity}</span>
                     <button onClick={() => quantity < count && increaseQuantity(sku)}>+</button>
-                    <button>GO TO CART</button>
+                    <Link href="/cart"><button className={styles.goTo}>VIEW CART</button></Link>
                 </div>
             </div>
         </div>
