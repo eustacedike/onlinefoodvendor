@@ -1,0 +1,21 @@
+.carousel {
+    width: 100%;
+    max-width: 500px;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    margin: auto;
+  }
+  
+  .carouselInner {
+    display: flex;
+    height: 100%;
+  }
+  
+  .card {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+    /* border: 2px solid green; */
+  }
+  
