@@ -51,7 +51,7 @@ export default function Navbar() {
             <nav>
                 <ul className={styles.navbarLinks}>
                     <li ><Link href="/menu">Menu</Link></li>
-                    <li><Link href="/menu" style={linkStyle}>Contact</Link></li>
+                    <li><Link href="/contactus">Contact</Link></li>
                     <li><Link href="/menu">About</Link></li>
                     {/* <li><Link href="/menu" style={linkStyle}>Latest</Link></li> */}
                 </ul>
@@ -88,7 +88,7 @@ export default function Navbar() {
                 />
                 <h2 >Aebis Unique Menu</h2> <br /> <br /> <br />
                 <li onClick={() => setMobile(false)}><Link href="/menu" >Menu</Link></li>
-                <li onClick={() => setMobile(false)}><Link href="/menu" style={linkStyle}>Contact</Link></li>
+                <li onClick={() => setMobile(false)}><Link href="/contactus" style={linkStyle}>Contact</Link></li>
                 <li onClick={() => setMobile(false)}><Link href="/menu" style={linkStyle}>About</Link></li>
                 {/* <li><Link href="/menu" style={linkStyle}>Latest</Link></li> */}
             </ul>

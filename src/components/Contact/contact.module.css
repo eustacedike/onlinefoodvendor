@@ -1,0 +1,198 @@
+.contactus {
+    display: flex;
+    margin: 10px 6vw;
+    gap: 40px;
+}
+
+
+.mailTo {
+    /* border: 1px solid red; */
+    width: 50%;
+    background-color: white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+}
+
+
+.mailTo form {
+    /* border: 1px solid blue; */
+    padding: 30px 3vw;
+    font-family: var(--primary-font);
+}
+
+
+
+
+
+
+.inputGroup {
+    margin: 15px 0;
+    display: flex;
+    gap: 15px;
+    /* border: 1px solid green; */
+
+    /* padding: 0px 6vw; */
+}
+
+.inputGroup div {
+    width: 100%;
+}
+
+.inputGroup label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: var(--card-p-font);
+    font-weight: 800;
+    /* color: #555; */
+}
+
+.inputGroup input,
+.inputGroup textarea {
+    width: 100%;
+    padding: 10px 8px;
+    border: 2px solid var(--primary-color);
+    border-radius: 6px;
+    font-size: var(--card-p-font);
+    margin-bottom: 6px;
+    font-family: var(--primary-font);
+}
+
+
+.sendButton {
+    font-family: inherit;
+    font-size: var(--card-h-font);
+    /* font-size: 5px; */
+    background: var(--primary-color);
+    color: white;
+    padding: 7px 17px;
+    /* padding-left: 0.9em; */
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.sendButton span {
+    display: block;
+    margin-left: 0.3em;
+    transition: all 0.3s ease-in-out;
+}
+
+.sendButton svg {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sendButton:hover .svg-wrapper {
+    animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+.sendButton:hover svg {
+    transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+
+.sendButton:hover span {
+    transform: translateX(5em);
+}
+
+.sendButton:active {
+    transform: scale(0.95);
+}
+
+
+
+
+.socials {
+    display: grid;
+    grid-template-columns: auto auto;
+    /* border: 2px solid red; */
+    gap: 2vw;
+    justify-content: center;
+}
+
+.social {
+    width: 18vw;
+    min-width: 120px;
+    display: flex;
+    height: 70px;
+    justify-content: space-between;
+    align-items: center;
+    /* margin-bottom: 24px; */
+    padding: 12px;
+    background-color: white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: var(--primary-font);
+    border: 1px solid rgb(128, 128, 128, 0.5);
+    border-radius: 3px;
+    /* grid-column: span 1; */
+}
+
+.imageContainer {
+    position: relative;
+    width: 20%;
+    height: 100%;
+    overflow: visible;
+    /* border: 1px solid blue; */
+    border-radius: 3px;
+
+}
+
+
+
+.details {
+    width: 75%;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: space-between; */
+}
+
+.details h2 {
+    margin: 6px 0;
+    font-size: var(--h3-font);
+    font-weight: 800;
+}
+
+.details p {
+    /* color: var(--primary-color); */
+    /* font-weight: 800; */
+    margin-bottom: 8px;
+    font-size: var(--card-p-font);
+}
+
+@keyframes fly-1 {
+    from {
+        transform: translateY(0.1em);
+    }
+
+    to {
+        transform: translateY(-0.1em);
+    }
+}
+
+
+.socials {
+    width: 45%;
+}
+
+
+@media (max-width: 760px) {
+
+    .contactus {
+        flex-direction: column;
+    }
+
+
+    .mailTo,
+    .socials {
+        width: 100%;
+    }
+
+    .social {
+        width: 40vw;
+    }
+    
+}
