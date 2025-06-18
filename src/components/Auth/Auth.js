@@ -5,6 +5,9 @@
 import styles from './auth.module.css';
 
 export default function Auth({content, onSubmit}) {
+
+
+  
   return (
     <form className={styles.loginContainer}>
       <h2 className={styles.title}>{content} <hr /></h2>

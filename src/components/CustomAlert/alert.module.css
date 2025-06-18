@@ -1,0 +1,48 @@
+
+
+
+.alertContainer {
+    position: fixed;
+    top: 35%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 22;
+    display: none;
+}
+
+
+
+.alert {
+    padding: 20px;
+    background-color: rgb(244, 67, 54, 0.95);
+    color: white;
+    max-width: 600px;
+    width: 100vw;
+    font-size: clamp(12px,1.8vw,18px);
+}
+  
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+  
+.closebtn:hover {
+    color: black;
+}
+
+.alert hr {
+    width: 100%;
+    animation: rundown 4s linear;
+    border: 1px solid pink;
+}
+
+@keyframes rundown {
+    from {width: 100%;}
+    to {width: 0%;}
+}

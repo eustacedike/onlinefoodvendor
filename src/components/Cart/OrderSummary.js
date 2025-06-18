@@ -6,7 +6,7 @@ import { useCartTotal } from '@/hooks/useCartTotal';
 import CheckoutButton from '../Checkout/CheckoutButton';
 import { useState } from 'react';
 // import Image from "next/image";
-
+import { TiArrowLeftOutline } from "react-icons/ti";
 // import { useProductContext } from '@/context/ProductContext';
 // import DataFetch from "@/context/datafetch";
 
@@ -19,7 +19,7 @@ export default function OrderSummary() {
 
     const subtotal = useCartTotal();
 
-
+    const [checkoutModal, setCheckoutModal] = useState(false);
     // const { products, productGroups } = useProductContext();
 
     // const [productSkus, setProductSkus] = useState(["a","b"]);
@@ -82,7 +82,7 @@ export default function OrderSummary() {
             <div className={styles.total}>
                 <span>Total</span><span className={styles.amount}>₦{formatNumberWithCommas(Math.round(total))}</span>
             </div>
-
+{/* 
             <input
                 type='email'
                 placeholder='Enter Email Address'
@@ -103,17 +103,23 @@ export default function OrderSummary() {
                 className={styles.emailInput}
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
-            />
+            /> */}
             {/* <CheckoutButton email={email} amount={Math.round(total) * 100} /> */}
-            <button className={styles.loginButton}>Check Out</button>
+            <button className={styles.toCheckout} onClick={() => setCheckoutModal(true)}>Check Out</button>
 
 
-            <div className={styles.checkoutContainer}>
+            <div className={styles.checkoutContainer}  style={{display: checkoutModal? null : "none"}}>
 
                 <div className={styles.checkoutForm}>
+
+                <h3>CHECKOUT</h3> <button className={styles.close} onClick={() => setCheckoutModal(false)}>
+                    {/* &#10006; CLOSE */}
+                    <TiArrowLeftOutline/> GO BACK
+                    
+                    </button>
+                <hr /> <br />
                 <div className={styles.checkoutScroll}>
-                    <h3>CHECKOUT</h3>
-                    <hr /> <br />
+                   
 
                     <label>Full Name</label>
                     <input
@@ -161,7 +167,7 @@ export default function OrderSummary() {
                         /> Get My Location
                     </label>
                     <br />
-                    <CheckoutButton email={email} amount={Math.round(total) * 100} fullname={fullname} phoneno={phoneNo} address={add}/>
+                    <CheckoutButton email={email} amount={Math.round(total) * 100} fullname={fullname} phoneno={phoneNo} address={address}/>
 
                 </div>
             </div>

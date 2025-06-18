@@ -5,7 +5,7 @@ import Footer from "@/components/Layout/Footer";
 // import { GlobalProvider } from '@/context/context';
 import { ProductProvider } from "@/context/ProductContext";
 import { CartProvider } from "@/context/CartContext";
-
+// import { AlertProvider } from "@/context/AlertContext";
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
 //   subsets: ["latin"],
@@ -46,6 +46,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${electrolize.variable} ${playfairDisplay.variable} ${dancingScript.variable}`}>
       <body>
+      {/* <AlertProvider> */}
         <ProductProvider>
           <CartProvider>
             
@@ -54,6 +55,7 @@ export default function RootLayout({ children }) {
           <Footer />
           </CartProvider>
         </ProductProvider>
+        {/* </AlertProvider> */}
 
       </body>
     </html>
