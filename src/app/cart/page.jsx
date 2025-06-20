@@ -15,12 +15,17 @@ export default function CartPage() {
 
     // const { showAlert } = useAlert();
 
-    // const alertBox = () => {
-    //     console.log("a");
+    // const alertBox = (str, msg, bgc, hrc) => {
+    //     // console.log("a");
     //     showAlert({
-    //         message: 'This is a custom alert!',
-    //         bgColor: '#d1e7dd', // light green
-    //         hrColor: '#0f5132'
+    //         // strong: "Success!",
+    //         // message: 'This is a custom alert!',
+    //         // bgColor: '#008000', // light green
+    //         // hrColor: '#ffffff',
+    //          strong: str,
+    //         message: msg,
+    //         bgColor: bgc, // light green
+    //         hrColor: hrc,
     //       });
     //   };
 
@@ -29,7 +34,7 @@ export default function CartPage() {
             {/* <p className="subtitle">Choose from our wide range of daily nourishment</p> */}
             {/* <DataFetch /> */}
           
-            {/* <button onClick={alertBox}>clickalert</button> */}
+    
            
             <h2 className="title">Cart <FaShoppingCart /><hr /></h2>
             <Cart />

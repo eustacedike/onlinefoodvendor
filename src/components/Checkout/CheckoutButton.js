@@ -6,9 +6,22 @@
 import { useRouter } from 'next/navigation';
 import style from './checkout.module.css'; // Assuming you have some styles
 // import { GrSend } from "react-icons/gr";
+import { useAlert } from '@/context/AlertContext';
 
 export default function CheckoutButton({ email, amount, fullname, phoneno, address }) {
   const router = useRouter();
+
+   const { showAlert } = useAlert();
+  
+   const alertBox = (str, msg, bgc, hrc) => {
+    console.log("a");
+    showAlert({
+         strong: str,
+        message: msg,
+        bgColor: bgc, // light green
+        hrColor: hrc,
+      });
+  };
 
   const handleCheckout = async () => {
     try {
@@ -27,22 +40,23 @@ export default function CheckoutButton({ email, amount, fullname, phoneno, addre
       const phoneRegex = /^0\d{10}$/; // Starts with 0 and must be 11 digits total
 
       if (!fullname.trim()) {
-        alert('Full name is required');
+        alertBox("Failed!",'Please, enter your full name','#ff0000','#ffffff');
+        // alert('Full name is required');
         return;
       }
 
       if (!emailRegex.test(email)) {
-        alert('Please enter a valid email address');
+        alertBox("Failed!",'Please enter a valid email address','#ff0000','#ffffff');
         return;
       }
 
       if (!phoneRegex.test(phoneno)) {
-        alert('Please enter a valid 11-digit phone number starting with 0');
+        alertBox("Failed!",'Please enter a valid 11-digit phone number starting with 0','#ff0000','#ffffff');
         return;
       }
 
       if (!address?.trim()) {
-        alert('Address is required');
+        alertBox("Failed!",'Address is required','#ff0000','#ffffff');
         return;
       }
 

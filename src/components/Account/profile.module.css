@@ -1,0 +1,44 @@
+
+
+
+.container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 1rem;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .actions button {
+    margin-left: 0.5rem;
+  }
+  
+  .section {
+    margin-bottom: 2rem;
+  }
+  
+  .orderCard {
+    border: 1px solid #eee;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: #f9f9f9;
+  }
+  
+  .reorderBtn {
+    margin-top: 0.5rem;
+    background: #fd831e;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 0.3rem;
+  }
+  

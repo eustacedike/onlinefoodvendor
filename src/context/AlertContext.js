@@ -12,8 +12,8 @@ export function useAlert() {
 export function AlertProvider({ children }) {
   const [alert, setAlert] = useState(null);
 
-  const showAlert = ({ message, bgColor = '#f8d7da', hrColor = '#f5c6cb' }) => {
-    setAlert({ message, bgColor, hrColor });
+  const showAlert = ({ strong, message, bgColor = '#f8d7da', hrColor = '#f5c6cb' }) => {
+    setAlert({ strong, message, bgColor, hrColor });
 
     setTimeout(() => {
       setAlert(null); // Auto-hide after 4s

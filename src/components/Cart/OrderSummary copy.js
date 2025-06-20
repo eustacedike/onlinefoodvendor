@@ -3,11 +3,10 @@
 import styles from './ordersummary.module.css';
 import { useCartTotal } from '@/hooks/useCartTotal';
 
-// import CheckoutButton from '../Checkout/CheckoutButton';
+import CheckoutButton from '../Checkout/CheckoutButton';
 import { useState } from 'react';
 // import Image from "next/image";
 import { TiArrowLeftOutline } from "react-icons/ti";
-import CheckoutModal from '../Checkout/Checkout';
 
 export default function OrderSummary() {
 
@@ -19,12 +18,12 @@ export default function OrderSummary() {
 
     const [checkoutModal, setCheckoutModal] = useState(false);
 
-    // const [fullname, setFullname] = useState("");
-    // const [email, setEmail] = useState("");
-    // const [phoneNo, setPhoneNo] = useState("");
-    // const [address, setAddress] = useState("");
-    // const [useCurrentLocation, setUseCurrentLocation] = useState(false);
-    // const [error, setError] = useState(null);
+    const [fullname, setFullname] = useState("");
+    const [email, setEmail] = useState("");
+    const [phoneNo, setPhoneNo] = useState("");
+    const [address, setAddress] = useState("");
+    const [useCurrentLocation, setUseCurrentLocation] = useState(false);
+    const [error, setError] = useState(null);
 
     // const decrease = () => setQuantity(prev => Math.max(0, prev - 1));
     // const increase = () => { if (quantity < product.count) { setQuantity(prev => prev + 1) } };
@@ -33,31 +32,31 @@ export default function OrderSummary() {
     const vat = (subtotal * 7.5) / 100;
     const total = subtotal + delivery + vat;
 
-    // const handleCheckboxChange = (e) => {
-    //     const checked = e.target.checked;
-    //     setUseCurrentLocation(checked);
+    const handleCheckboxChange = (e) => {
+        const checked = e.target.checked;
+        setUseCurrentLocation(checked);
 
-    //     if (checked && 'geolocation' in navigator) {
-    //         // Clear address input
-    //         setAddress('');
+        if (checked && 'geolocation' in navigator) {
+            // Clear address input
+            setAddress('');
 
-    //         navigator.geolocation.getCurrentPosition(
-    //             (position) => {
-    //                 const { latitude, longitude } = position.coords;
-    //                 const locationString = `${latitude},${longitude}`;
-    //                 setAddress(locationString); // Save coords to address
-    //                 setError(null);
-    //             },
-    //             (err) => {
-    //                 alert('Unable to retrieve location. Please allow access.');
-    //                 setUseCurrentLocation(false); // Uncheck the box
-    //             }
-    //         );
-    //     } else if (!checked) {
-    //         setAddress(''); // Clear again for manual entry
-    //         setError(null);
-    //     }
-    // };
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const { latitude, longitude } = position.coords;
+                    const locationString = `${latitude},${longitude}`;
+                    setAddress(locationString); // Save coords to address
+                    setError(null);
+                },
+                (err) => {
+                    alert('Unable to retrieve location. Please allow access.');
+                    setUseCurrentLocation(false); // Uncheck the box
+                }
+            );
+        } else if (!checked) {
+            setAddress(''); // Clear again for manual entry
+            setError(null);
+        }
+    };
 
 
     return (
@@ -82,13 +81,12 @@ export default function OrderSummary() {
             <button className={styles.toCheckout} onClick={() => setCheckoutModal(true)}>Check Out</button>
 
 
-<CheckoutModal checkoutModal={checkoutModal} setCheckoutModal={setCheckoutModal} total={total}/>
-
-            {/* <div className={styles.checkoutContainer} style={{ display: checkoutModal ? null : "none" }}>
+            <div className={styles.checkoutContainer} style={{ display: checkoutModal ? null : "none" }}>
 
                 <div className={styles.checkoutForm}>
 
                     <h3>CHECKOUT</h3> <button className={styles.close} onClick={() => setCheckoutModal(false)}>
+                        {/* &#10006; CLOSE */}
                         <TiArrowLeftOutline /> GO BACK
 
                     </button>
@@ -155,7 +153,7 @@ export default function OrderSummary() {
                     <CheckoutButton email={email} amount={Math.round(total) * 100} fullname={fullname} phoneno={phoneNo} address={address} />
 
                 </div>
-            </div> */}
+            </div>
         </div>
     )
 

@@ -7,14 +7,17 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 22;
-    display: none;
+    font-family: var(--primary-font);
+    border-radius: 4px;
+    /* color: #000000; */
+    /* display: none; */
 }
 
 
 
 .alert {
     padding: 20px;
-    background-color: rgb(244, 67, 54, 0.95);
+    /* background-color: rgb(244, 67, 54, 0.95); */
     color: white;
     max-width: 600px;
     width: 100vw;
@@ -39,7 +42,7 @@
 .alert hr {
     width: 100%;
     animation: rundown 4s linear;
-    border: 1px solid pink;
+    /* border: 1px solid pink; */
 }
 
 @keyframes rundown {
