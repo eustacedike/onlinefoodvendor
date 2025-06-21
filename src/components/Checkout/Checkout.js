@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { TiArrowLeftOutline } from 'react-icons/ti';
 import CheckoutButton from '../Checkout/CheckoutButton';
 
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+// import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
 import { useAlert } from '@/context/AlertContext';
 
@@ -50,7 +50,7 @@ export default function CheckoutModal({checkoutModal, setCheckoutModal, total}) 
     const alertBox = (str, msg, bgc, hrc) => {
         // console.log("a");
         showAlert({
-             strong: str,
+            strong: str,
             message: msg,
             bgColor: bgc, // light green
             hrColor: hrc,
@@ -130,7 +130,7 @@ return (
                     disabled={useCurrentLocation}
                     style={{ backgroundColor: useCurrentLocation ? '#eee' : '#fff' }}
                 />
-
+{/* 
                 {location?.lat && location?.lng && (
                     <MapContainer center={[location.lat, location.lng]} zoom={13} style={{ height: "300px", width: "100%" }}>
                         <TileLayer
@@ -143,7 +143,7 @@ return (
                             </Popup>
                         </Marker>
                     </MapContainer>
-                )}
+                )} */}
             </div>
 
             <label>
