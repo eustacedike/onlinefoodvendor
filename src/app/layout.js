@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono, Dancing_Script, Inter, Playfair_Display, Electrolize } from "next/font/google";
 import "./globals.css";
-import 'leaflet/dist/leaflet.css';
+import Script from "next/script";
+// import 'leaflet/dist/leaflet.css';
 
 import Navbar from "@/components/Layout/Navbar";
 import Footer from "@/components/Layout/Footer";
@@ -47,6 +48,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${electrolize.variable} ${playfairDisplay.variable} ${dancingScript.variable}`}>
+       <head>
+        {/* Add the Script here */}
+        <Script
+          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
+          strategy="beforeInteractive"
+        />
+      </head>
       <body>
       <AlertProvider>
         <ProductProvider>

@@ -2,6 +2,7 @@
 
 import styles from './cart.module.css';
 import { useState, useEffect, useMemo } from 'react';
+import Link from 'next/link';
 // import Image from "next/image";
 import CartItem from './CartItem';
 import OrderSummary from './OrderSummary';
@@ -11,6 +12,8 @@ import Blank from '../Loading/Blank';
 import { useProductContext } from '@/context/ProductContext';
 import { useCartContext } from '@/context/CartContext';
 import DataFetch from "@/context/datafetch";
+
+import { useCartTotal } from '@/hooks/useCartTotal';
 
 export default function Cart() {
 
@@ -35,6 +38,7 @@ export default function Cart() {
 
 
     const [cartItems, setCartItems] = useState([]);
+      const subtotal = useCartTotal();
     // const [total, setTotal] = useState(0);
 
     useEffect(() => {
@@ -70,11 +74,13 @@ export default function Cart() {
 
 
 
+    function formatNumberWithCommas(number) {
+        return new Intl.NumberFormat('en-US').format(number);
+    }
 
 
 
-
-    // console.log(cartItems);
+    console.log(cartItems);
     // console.log(total);
 
     return (
@@ -93,7 +99,37 @@ export default function Cart() {
                             )
                         })}
                     </div>
-                    <OrderSummary />
+                    {/* <OrderSummary /> */}
+                    <div className={styles.orderSummary}>
+                        <h3>Items</h3>
+                        <hr />
+                        {cartItems.map(eachItem => {
+                            return (
+                                <div className={styles.itemsQauntity} key={eachItem.Id}>
+                                <span>{eachItem.title} &nbsp; (x{eachItem.quantity})</span>
+                        <span className={styles.amount}>₦{(eachItem.price - ((eachItem.price * eachItem.discount) / 100))*eachItem.quantity}</span>
+                            </div>
+
+                            )
+                        })}
+
+                        {/* <div className={styles.subtotal}>
+                            <span>Subtotal</span><span className={styles.amount}>₦20</span>
+                        </div>
+                        <div className={styles.delivery}>
+                            <span>Delivery</span><span className={styles.amount}>₦20</span>
+                        </div>
+                        <div className={styles.vat}>
+                            <span>VAT (7.5%)</span><span className={styles.amount}>₦40</span>
+                        </div> */}
+                        <hr />
+                        <div className={styles.subtotal}>
+                            <span>Subtotal</span><span className={styles.amount}>₦{formatNumberWithCommas(Math.round(subtotal))}</span>
+                        </div>
+
+                        <Link href="/checkout"> <button className={styles.toCheckout}>Checkout</button></Link>
+
+                    </div>
                 </>)
             }
 

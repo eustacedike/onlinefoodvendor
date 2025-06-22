@@ -15,6 +15,7 @@ import youtubeImg from '@/public/images/socials/youtube.png';
 
 
 
+
 export default function Contact() {
 
 
@@ -58,7 +59,6 @@ export default function Contact() {
     return (
 
         <div className={styles.contactus}>
-
             <div className={styles.mailTo}>
                 <form onSubmit={handleSubmit}>
                     <div className={styles.inputGroup}>

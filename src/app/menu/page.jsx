@@ -10,6 +10,8 @@ import React, { Suspense } from "react";
 import styles from "./menu.module.css";
 // import otherStyle from "../page.module.css";
 import ProductList from "@/components/ProductList/ProductList";
+// import { useCartTotal } from "@/hooks/useCartTotal";
+
 
 // const LazyProduct = React.lazy(() => import('@/components/ProductList/ProductList'));
 
@@ -31,13 +33,17 @@ import DataFetch from "@/context/datafetch";
 
 export default function Menu() {
 
+  // const stotal = useCartTotal();
+
+  // console.log(stotal)
+
   const { products, productGroups } = useProductContext();
 
   if (!Array.isArray(products)) return <p>No products found.</p>;
   // console.log(products);
   return (
     <div className={styles.page}>
-      <p className="subtitle">Choose from our wide range of daily nourishment</p>
+      <p className="subtitle">Choose from our wide range of daily nourishment </p>
       <DataFetch />
       <h2 className="title">Popular <hr /></h2>
 
