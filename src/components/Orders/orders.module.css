@@ -1,0 +1,54 @@
+
+
+.ordersContainer {
+    width: 100%;
+
+}
+
+
+
+  
+  .orderCard {
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 1rem;
+    /* background: #f9f9f9; */
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
+    font-family: var(--primary-font);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: var(--card-h-font);
+    cursor: pointer;
+
+  }
+
+  .innerDiv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .status {
+    /* background: #fd831e; */
+    color: white;
+    padding: 2px 5px;
+    border: none;
+    border-radius: 2px;
+    font-family: var(--primary-font);
+  }
+  
+  .reorderBtn {
+    /* margin-top: 0.5rem; */
+    background: #fd831e;
+    color: white;
+    padding: 3px 8px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: var(--primary-font);
+
+  }
+  

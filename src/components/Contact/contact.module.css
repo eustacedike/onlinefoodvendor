@@ -41,7 +41,7 @@
 .inputGroup label {
     display: block;
     margin-bottom: 5px;
-    font-size: var(--card-p-font);
+    font-size: var(--card-h-font);
     font-weight: 800;
     /* color: #555; */
 }
