@@ -3,7 +3,7 @@
 
 // import CheckoutModal from "@/components/Checkout/Checkout";
 // import OrderSummary from "@/components/Cart/OrderSummary";
-import Checkout from "@/components/CheckoutB/Checkout";
+import Checkout from "@/components/Checkout/Checkout";
 
 import { FaShoppingCart } from "react-icons/fa";
 import { useState } from "react";

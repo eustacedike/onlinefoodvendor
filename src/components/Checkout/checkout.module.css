@@ -1,28 +1,40 @@
 
-.checkoutContainer {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  background-color: rgb(0, 0, 0, 0.92);
-  z-index: 16;
+.checkoutMain {
+
   display: flex;
-align-content: center;
-justify-content: center;
+  width: 100%;
+  padding: 10px 6vw;
+  justify-content: space-between;
+
 }
 
 .checkoutForm {
-  width: 95%;
-  max-width: 400px;
+  width: 55%;
+  /* max-width: 600px; */
   padding: 30px 2vw;
-  margin: 5vh auto;
+  /* padding: 12px; */
+  font-family: var(--primary-font);
+  /* margin: 5vh auto; */
   /* margin-top: 60px; */
   /* height: fit-content; */
 background-color: white;
-height: 89vh;
+/* height: 89vh; */
 position: relative;
-max-height: 500px;
+/* max-height: 500px; */
+box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
+}
+
+.inputGroup {
+  margin: 15px 0;
+  display: flex;
+  gap: 15px;
+  /* border: 1px solid green; */
+
+  /* padding: 0px 6vw; */
+}
+
+.inputGroup div {
+  width: 100%;
 }
 
 .emailInput {
@@ -53,13 +65,13 @@ max-height: 500px;
 }
 
 .checkoutScroll {
-  height: 55vh;
-  overflow-y: scroll;
+  /* height: 55vh; */
+  /* overflow-y: scroll; */
   /* border: 1px solid red; */
-  max-height: 310px;
+  /* max-height: 310px; */
 }
 .checkoutScroll::-webkit-scrollbar {
-  display: none;
+  /* display: none; */
 }
 .checkoutForm label {
   font-size: var(--card-h-font);
@@ -69,7 +81,6 @@ max-height: 500px;
 
 
 .checkoutButton {
-    /* background-color: var(--primary-color); */
     background-color: limegreen;
     color: white;
     border: 1px solid transparent;
@@ -80,8 +91,19 @@ max-height: 500px;
     border-radius: 4px;
     font-weight: 800;
     width: 100%;
-    margin-top: 15px;
+    margin: 15px 0;
     transition: 600ms ease-in-out;
+    }
+
+
+  @media (max-width: 780px) {
   
-    /* transition: background-color 0.3s ease; */
-  }
+   .checkoutMain {
+    flex-direction: column;
+    justify-content: space-around;
+   }
+
+   .checkoutForm {
+    width: 100%;
+   }
+    }

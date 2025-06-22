@@ -5,7 +5,7 @@ import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 // import Image from "next/image";
 import CartItem from './CartItem';
-import OrderSummary from './OrderSummary';
+// import OrderSummary from './OrderSummary';
 // import BlankCart from './Blank';
 import Blank from '../Loading/Blank';
 
@@ -105,7 +105,7 @@ export default function Cart() {
                         <hr />
                         {cartItems.map(eachItem => {
                             return (
-                                <div className={styles.itemsQauntity} key={eachItem.Id}>
+                                <div className={styles.itemsQuantity} key={eachItem.Id}>
                                 <span>{eachItem.title} &nbsp; (x{eachItem.quantity})</span>
                         <span className={styles.amount}>₦{(eachItem.price - ((eachItem.price * eachItem.discount) / 100))*eachItem.quantity}</span>
                             </div>

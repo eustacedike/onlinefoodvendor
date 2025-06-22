@@ -8,7 +8,7 @@ import style from './checkout.module.css'; // Assuming you have some styles
 // import { GrSend } from "react-icons/gr";
 import { useAlert } from '@/context/AlertContext';
 
-export default function CheckoutButton({ email, amount, fullname, phoneno, address }) {
+export default function CheckoutButton({ email, amount, fullname, phoneno, address, cords, setError }) {
   const router = useRouter();
 
    const { showAlert } = useAlert();
@@ -25,6 +25,53 @@ export default function CheckoutButton({ email, amount, fullname, phoneno, addre
 
   const handleCheckout = async () => {
     try {
+      
+
+      // console.log('Paystack response:', result);
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const phoneRegex = /^0\d{10}$/; // Starts with 0 and must be 11 digits total
+      function isWithinLagos(lat, lng) {
+        return lat >= 6.3 && lat <= 6.7 && lng >= 3.0 && lng <= 3.6;
+      }
+
+      if (!fullname.trim()) {
+        // alertBox("Failed!",'Please enter your full name','#ff0000','#ffffff');
+        setError("Please enter your full name");
+        // alert('Full name is required');
+        return;
+      }
+
+      if (!emailRegex.test(email)) {
+        // alertBox("Failed!",'Please enter a valid email address','#ff0000','#ffffff');
+        setError("Please enter a valid email address");
+        return;
+      }
+
+      if (cords.lat === 0 || cords.lng === 0) {
+        // alert("Sorry, we currently only deliver within Lagos.");
+        setError("Please, select a valid address or allow location access");
+        return;
+      }
+
+      if (!isWithinLagos(cords.lat, cords.lng)) {
+        // alert("Sorry, we currently only deliver within Lagos.");
+        setError("Sorry, we currently only deliver within Lagos");
+        return;
+      }
+    
+
+      if (!phoneRegex.test(phoneno)) {
+        // alertBox("Failed!",'Please enter a valid 11-digit phone number starting with 0','#ff0000','#ffffff');
+        setError("Please enter a valid 11-digit phone number starting with 0");
+        return;
+      }
+
+      // if (!address?.trim()) {
+      //   alertBox("Failed!",'Address is required','#ff0000','#ffffff');
+      //   return;
+      // }
+
       const res = await fetch('/api/paystack/init', {
         method: 'POST',
         headers: {
@@ -34,32 +81,6 @@ export default function CheckoutButton({ email, amount, fullname, phoneno, addre
       });
 
       const result = await res.json();
-      // console.log('Paystack response:', result);
-
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      const phoneRegex = /^0\d{10}$/; // Starts with 0 and must be 11 digits total
-
-      if (!fullname.trim()) {
-        alertBox("Failed!",'Please, enter your full name','#ff0000','#ffffff');
-        // alert('Full name is required');
-        return;
-      }
-
-      if (!emailRegex.test(email)) {
-        alertBox("Failed!",'Please enter a valid email address','#ff0000','#ffffff');
-        return;
-      }
-
-      if (!phoneRegex.test(phoneno)) {
-        alertBox("Failed!",'Please enter a valid 11-digit phone number starting with 0','#ff0000','#ffffff');
-        return;
-      }
-
-      if (!address?.trim()) {
-        alertBox("Failed!",'Address is required','#ff0000','#ffffff');
-        return;
-      }
-
 
 
       if (result?.status && result?.data?.authorization_url) {
