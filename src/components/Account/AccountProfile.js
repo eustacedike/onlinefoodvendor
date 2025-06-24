@@ -117,7 +117,7 @@ export default function AccountProfile() {
 </div>
                         <hr/>
                         {user.addresses.map((address, index) => (
-                            <div className={styles.detail}>
+                            <div className={styles.detail} key={index}>
                                 {/* <input
                                     value={address.place}
                                     disabled
