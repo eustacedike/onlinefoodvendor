@@ -5,30 +5,22 @@
 // import Image from "next/image";
 import Auth from "@/components/Auth/Auth";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
 
 
 
 export default function LoginPage() {
 
-    const login = async (email, password) => {
-        const res = await fetch('/api/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ email, password }),
-          credentials: 'include', // important to allow cookies
-        });
-      
-        if (res.ok) {
-          // optionally fetch user data or redirect
-          router.push('/profile'); 
-        } else {
-          const error = await res.json();
-          alert(error.message || 'Login failed');
-        }
-      };
-      
+
+  const login = async (e) => {
+    e.preventDefault();
+    const result = await signIn('credentials', {
+      redirect: true,
+      email,
+      password,
+      callbackUrl: '/profile', 
+    });
+  } 
 
     return (
         <div>

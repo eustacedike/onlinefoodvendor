@@ -39,12 +39,11 @@ export default function Navbar() {
         <header className={styles.header}>
             <Link href="/" style={linkStyle}>
                 <Image
-                    src={logo}     // local image (in /public/images)
+                    src={logo}    
                     alt="Logo"
                     width={40}
                     height={40}
                     priority
-                //   style={{borderRadius: "50%"}}
                 />
                 <h2 >Aebis Unique Menu</h2>
             </Link>
