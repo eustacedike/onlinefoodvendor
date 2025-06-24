@@ -130,7 +130,6 @@ export default function OrderSummary({formData}) {
                 <span>Total</span><span className={styles.amount}>₦{formatNumberWithCommas(Math.round(total))}</span>
             </div>
            
-            {/* <button className={styles.toCheckout} onClick={() => setCheckoutModal(true)}>Check Out</button> */}
 
             <CheckoutButton
                 email={formData.email}
@@ -142,80 +141,7 @@ export default function OrderSummary({formData}) {
                 setError={setError}
             /> 
            {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
-{/* <CheckoutModal checkoutModal={checkoutModal} setCheckoutModal={setCheckoutModal} total={total}/> */}
 
-            {/* <div className={styles.checkoutContainer} style={{ display: checkoutModal ? null : "none" }}>
-
-                <div className={styles.checkoutForm}>
-
-                    <h3>CHECKOUT</h3> <button className={styles.close} onClick={() => setCheckoutModal(false)}>
-                        <TiArrowLeftOutline /> GO BACK
-
-                    </button>
-                    <hr /> <br />
-                    <div className={styles.checkoutScroll}>
-
-
-                        <label>Full Name</label>
-                        <input
-                            type='name'
-                            placeholder='John doe'
-                            className={styles.emailInput}
-                            value={fullname}
-                            onChange={(e) => setFullname(e.target.value)}
-                        />
-
-                        <label>Email Address</label>
-                        <input
-                            type='email'
-                            placeholder='johndoe@example.com'
-                            className={styles.emailInput}
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-
-                        <label>Phone Number</label>
-                        <input
-                            type='number'
-                            placeholder='eg: 08031234567'
-                            className={styles.emailInput}
-                            value={phoneNo}
-                            onChange={(e) => setPhoneNo(e.target.value)}
-                        />
-
-                        <label>House Address</label>
-                        <input
-                            type='text'
-                            placeholder='eg: 13b Car wash Street, Gbagada, Lagos'
-                            className={styles.emailInput}
-                            value={address}
-                            onChange={(e) => setAddress(e.target.value)}
-                            disabled={useCurrentLocation}
-                            style={{ backgroundColor: useCurrentLocation ? '#eee' : '#fff' }}
-                        />
-
-                        <iframe
-                            width="450"
-                            height="250"
-                            frameBorder="0"
-                            style={{ border: 0 }}
-                            referrerPolicy="no-referrer-when-downgrade"
-                            src="https://www.google.com/maps/embed/v1/MAP_MODE?key=YOUR_API_KEY&PARAMETERS"
-                            allowFullScreen
-                        ></iframe>
-                    </div>
-                    <label>
-                        <input
-                            type="checkbox"
-                            checked={useCurrentLocation}
-                            onChange={handleCheckboxChange}
-                        /> Get My Location
-                    </label>
-                    <br />
-                    <CheckoutButton email={email} amount={Math.round(total) * 100} fullname={fullname} phoneno={phoneNo} address={address} />
-
-                </div>
-            </div> */}
         </div>
     )
 

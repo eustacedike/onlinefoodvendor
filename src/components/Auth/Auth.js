@@ -9,7 +9,7 @@ export default function Auth({content, onSubmit}) {
 
   
   return (
-    <form className={styles.loginContainer}>
+    <form className={styles.loginContainer} onSubmit={onSubmit}>
       <h2 className={styles.title}>{content} <hr /></h2>
 
       <div className={styles.inputGroup}>

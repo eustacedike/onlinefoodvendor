@@ -14,7 +14,7 @@ export async function POST(req) {
         body: JSON.stringify({
           email,
           amount,
-          callback_url: 'http://localhost:3000/menu',
+          callback_url: '/orders/M9E7YT82WQLF46GH',
         }),
       });
   

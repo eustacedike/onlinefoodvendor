@@ -2,34 +2,112 @@
 
 .ordersContainer {
     width: 100%;
+    height: 100%;
+    /* border: 2px solid red; */
+
+    overflow: auto;
+    padding: 0px 6%;
 
 }
 
+/* General table styling */
+.orderTable {
+  width: 100%;
+      border-collapse: collapse; 
+    margin: 0 auto; 
+    font-size: var(--card-h-font); 
+    font-family: var(--primary-font); /* Set a clean font */
+    min-width: 400px; /* Ensure a minimum width */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); /* Add a subtle shadow */
+    height: 100%;
+    /* border: 2px solid blue; */
+    /* overflow: hidden; */
 
+    /* display: block; */
+    /* overflow: scroll; */
+    /* overflow-y: scroll; */
 
+  }
+
+  .orderTable thead {
+    position: sticky;
+    top: 0;
+    /* display: block; */
+    /* width: 100%; */
+  }
   
-  .orderCard {
-    border: 1px solid #eee;
-    border-radius: 4px;
-    padding: 10px;
-    margin-bottom: 1rem;
-    /* background: #f9f9f9; */
+  /* Table header (thead) styling */
+  .orderTable thead tr {
+    background-color: var(--secondary-color); /* Header background color */
+    color: #ffffff; /* Header text color */
+    text-align: center; /* Align header text to the left */
+  }
+
+  .orderTable tbody {
+    height: 100%;
+    /* width: 100%; */
+
+    /* display: block; */
+  }
+  
+  /* Table header cells (th) and data cells (td) styling */
+  .orderTable th,
+  .orderTable td {
+    padding: 10px 15px; 
+    border: 1px solid #dddddd; 
+    text-wrap: nowrap;
+    /* min-width: max-content; */
+  }
+  
+  /* Table body (tbody) styling */
+  .orderTable tbody tr {
+    border-bottom: 1px solid #dddddd; /* Bottom border for rows */
+    text-align: center; /* Align header text to the left */
+    width: 100%;
+    background-color: white;
+    /* border: 2px solid green; */
+  
+}
+  
+  /* Last row in tbody */
+  .orderTable tbody tr:last-of-type {
+    border-bottom: 2px solid var(--secondary-color); /* Stronger bottom border for the last row */
+  }
+
+  .orderTable tbody tr:nth-of-type(odd) {
+    background-color: #f3f3f3; /* Lighter background for odd rows */
+  }
+
+  .orderDetail {
+    padding: 20px 6vw;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .orderSummary {
+    width: 35%;
+    /* display: flex; */
+    height: fit-content;
+
+    padding: 12px;
+    /* background-color: rgb(255, 255, 255, 0.75); */
+    background-color: white;
     box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
     font-family: var(--primary-font);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 10px;
-    font-size: var(--card-h-font);
-    cursor: pointer;
+}
 
-  }
-
-  .innerDiv {
+.itemsQuantity,
+.subtotal {
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-  }
+    margin: 15px 0;
+}
+
+.amount, .subtotal {
+    font-weight: 800;
+}
+
 
   .status {
     /* background: #fd831e; */
@@ -40,9 +118,9 @@
     font-family: var(--primary-font);
   }
   
-  .reorderBtn {
+  .viewBtn {
     /* margin-top: 0.5rem; */
-    background: #fd831e;
+    background: #2196f3;
     color: white;
     padding: 3px 8px;
     border: none;
@@ -52,3 +130,67 @@
 
   }
   
+
+  
+.orderSummary {
+  width: 35%;
+  /* display: flex; */
+  height: fit-content;
+
+  padding: 12px;
+  /* background-color: rgb(255, 255, 255, 0.75); */
+  background-color: white;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
+  font-family: var(--primary-font);
+}
+
+.itemsQuantity,
+.subtotal {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+
+.amount, .subtotal {
+  font-weight: 800;
+}
+
+
+.toCheckout {
+  background-color: var(--primary-color);
+  color: white;
+  border: 1px solid transparent;
+  padding: 0.5rem 1.5rem;
+  font-size: var(--card-h-font);
+  font-family: var(--primary-font);
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 800;
+  width: 100%;
+  margin-top: 15px;
+  /* transition: 600ms ease-in-out;  */
+}
+
+
+
+
+
+@media (max-width: 780px) {
+ 
+  .orderDetail {
+    display: flex;
+    /* justify-content: space-between; */
+    flex-direction: column-reverse;
+  }
+  
+  .orderSummary {
+
+      width: 100%; 
+
+   }
+
+
+
+
+}

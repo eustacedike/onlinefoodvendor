@@ -52,12 +52,13 @@ export default function Navbar() {
                 <ul className={styles.navbarLinks}>
                     <li ><Link href="/menu">Menu</Link></li>
                     <li><Link href="/contactus">Contact</Link></li>
-                    <li><Link href="/menu">About</Link></li>
+                    <li><Link href="/orders">Orders</Link></li>
+                    <li><Link href="/#aboutus">About</Link></li>
                     {/* <li><Link href="/menu" style={linkStyle}>Latest</Link></li> */}
                 </ul>
                 <div className={styles.navbarButtons}>
                     <Link href="/cart"> <button><FaShoppingCart /><p className={styles.cartCount}>{cartCount}</p></button> </Link>
-                    <Link href="/auth/login"> <button><MdAccountCircle /></button></Link>
+                    <Link href="/profile"> <button><MdAccountCircle /></button></Link>
                 </div>
 
 
@@ -88,8 +89,9 @@ export default function Navbar() {
                 />
                 <h2 >Aebis Unique Menu</h2> <br /> <br /> <br />
                 <li onClick={() => setMobile(false)}><Link href="/menu" >Menu</Link></li>
+                <li onClick={() => setMobile(false)}><Link href="/orders" >Orders</Link></li>
                 <li onClick={() => setMobile(false)}><Link href="/contactus" style={linkStyle}>Contact</Link></li>
-                <li onClick={() => setMobile(false)}><Link href="/menu" style={linkStyle}>About</Link></li>
+                <li onClick={() => setMobile(false)}><Link href="/#aboutus" style={linkStyle}>About</Link></li>
                 {/* <li><Link href="/menu" style={linkStyle}>Latest</Link></li> */}
             </ul>
 

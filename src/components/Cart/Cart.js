@@ -55,18 +55,6 @@ export default function Cart() {
             }, []);
 
             setCartItems(newCartItems);
-
-            // Calculate total using the new cart items
-            // const calculatedTotal = newCartItems.reduce((sum, item) => {
-            //   const price = Number(item.price) || 0;
-            //   const quantity = Number(item.quantity) || 0;
-            //   const discount = Number(item.discount) || 0;
-
-            //   const discountedPrice = price - ((price * discount) / 100);
-            //   return sum + (discountedPrice * quantity);
-            // }, 0);
-
-            // setTotal(calculatedTotal);
         }
     }, [products, cartStore]);
 
@@ -80,7 +68,7 @@ export default function Cart() {
 
 
 
-    console.log(cartItems);
+    // console.log(cartItems);
     // console.log(total);
 
     return (
@@ -113,15 +101,7 @@ export default function Cart() {
                             )
                         })}
 
-                        {/* <div className={styles.subtotal}>
-                            <span>Subtotal</span><span className={styles.amount}>₦20</span>
-                        </div>
-                        <div className={styles.delivery}>
-                            <span>Delivery</span><span className={styles.amount}>₦20</span>
-                        </div>
-                        <div className={styles.vat}>
-                            <span>VAT (7.5%)</span><span className={styles.amount}>₦40</span>
-                        </div> */}
+                      
                         <hr />
                         <div className={styles.subtotal}>
                             <span>Subtotal</span><span className={styles.amount}>₦{formatNumberWithCommas(Math.round(subtotal))}</span>

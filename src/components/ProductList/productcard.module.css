@@ -94,6 +94,7 @@
 .details {
     padding: 12px;
     background: var(--primary-color);
+    /* background: (145deg, #ff8c20, #e4761b); */
     border: 1px solid black;
     border-radius: 0 0 3px 3px;
 }
@@ -158,6 +159,7 @@
 
     .card {
         width: 160px; 
+        box-shadow: none;
     }
 
     .details {

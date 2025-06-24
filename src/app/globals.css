@@ -147,6 +147,11 @@ a {
   transition: 300ms ease-in-out;
 }
 
+.margin6VW {
+padding: 30px 6vw;
+
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

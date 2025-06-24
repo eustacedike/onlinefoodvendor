@@ -77,6 +77,24 @@ export default function Home() {
         </div>
 
 
+        <div className={styles.banner} id="aboutus">
+         
+          <div className={styles.bannerText}>
+            <h2>About Us - Aebis Unique Menu</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam reprehenderit, nisi, aliquam esse animi, ea sed quas laudantium quam architecto asperiores in at? Suscipit, quia explicabo! Sit nulla excepturi quibusdam vel commodi expedita minima, tenetur sequi ducimus at totam nihil, corrupti cum nisi vero provident!
+            </p>
+          </div>
+
+          <Image
+            src={bannerImg}
+            alt="banner"
+            fill
+            className={styles.bannerImg}
+          />
+
+        </div>
+
      
       </main>
 

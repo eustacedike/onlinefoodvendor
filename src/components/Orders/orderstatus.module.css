@@ -1,0 +1,80 @@
+
+.orderStatusContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    max-width: 700px;
+    /* margin: 2rem auto; */
+    background-color: white;
+    /* border: 2px solid red; */
+    padding: 20px 0;
+
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
+    font-family: var(--primary-font);
+
+    width: 55%;
+  }
+  
+  .orderStep {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    text-align: center;
+    position: relative;
+  }
+  
+  .orderIcon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+    color: #ccc;
+
+    z-index: 2;
+  }
+  
+  .orderLabel {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #aaa;
+  }
+  
+  .orderIcon.active,
+  .orderLabel.active {
+    color: var(--secondary-color); /* Green */
+  }
+  
+  .orderIcon.current,
+  .orderLabel.current {
+    color:  limegreen; /* Blue */
+  }
+  
+  .orderLine {
+    position: absolute;
+    top: 15px;
+    /* left: 50%; */
+    width: 100%;
+    height: 4px;
+    background-color: #ddd;
+    /* z-index: -1; */
+    transform: translateX(50%);
+
+    /* border: 2px solid red; */
+
+  }
+  
+  .orderLine.fill {
+    background-color: limegreen;
+  }
+  
+
+  @media (max-width: 780px) {
+
+    
+    .orderStatusContainer {
+  
+        width: 100%; 
+  
+     }
+    }  

@@ -2,6 +2,8 @@ import Link from "next/link";
 import styles from "./orders.module.css";
 import { useState, useEffect } from "react";
 
+import Blank from "../Loading/Blank";
+
 
 export default function Orders({ orders }) {
 
@@ -9,26 +11,44 @@ export default function Orders({ orders }) {
     return (
 
         <div className={styles.ordersContainer}>
-            {orders.map((order) => (
-                <div key={order.id} className={styles.orderCard}>
-                    <div className={styles.innerDiv}>
-                        <p><strong>Order #{order.id}</strong></p>
-                        <button
-                        className={styles.status}
-                        style={{backgroundColor: order.status==="Delivered"? "limegreen" :
-                            order.status==="Transit"? "orange" : "black"}}
-                        >{order.status}</button>
-                    </div>
-                    <div className={styles.innerDiv}>
-                        <p>{order.date}</p>
-                        <b>₦{order.amount}</b>               
-                    </div>
-                    <div className={styles.innerDiv}>
-                            <p>{order.quantity} Items</p>
-                            <button className={styles.reorderBtn}>Reorder</button>
-                        </div>
-                </div>
-            ))}
+
+ {orders.length === 0 ? (<> <Blank content="No Orders Yet" imgSrc={null} /> </>) :
+
+                (<>
+                    <table className={styles.orderTable}>
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {orders.map((order) => (
+                        <tr key={order.id}>
+                            <td>{order.id}</td>
+                            <td>{order.date}</td>
+                            <td>₦{Intl.NumberFormat('en-US').format(order.subtotal + order.delivery + order.vat)}</td>
+                            <td
+                            style={{ color: "white",
+                                backgroundColor: order.status === "delivered" ? "limegreen" :
+                                    order.status === "transit" ? "orange" : "black"
+                            }}
+                            > {order.status}</td>
+                            <td><Link href={`/orders/${order.ref}`}><button className={styles.viewBtn}>View</button></Link></td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+
+                </>)
+            }
+
+           
+
+           
         </div>
     );
 

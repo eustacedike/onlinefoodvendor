@@ -9,6 +9,7 @@ import Footer from "@/components/Layout/Footer";
 import { ProductProvider } from "@/context/ProductContext";
 import { CartProvider } from "@/context/CartContext";
 import { AlertProvider } from "@/context/AlertContext";
+import { OrderProvider } from "@/context/OrderContext";
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
 //   subsets: ["latin"],
@@ -48,7 +49,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${electrolize.variable} ${playfairDisplay.variable} ${dancingScript.variable}`}>
-       <head>
+      <head>
         {/* Add the Script here */}
         <Script
           src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
@@ -56,15 +57,18 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body>
-      <AlertProvider>
-        <ProductProvider>
-          <CartProvider>
-            
-          <Navbar />
-          {children}
-          <Footer />
-          </CartProvider>
-        </ProductProvider>
+        <AlertProvider>
+          <OrderProvider>
+            <ProductProvider>
+              <CartProvider>
+
+                <Navbar />
+                {children}
+                <Footer />
+                
+              </CartProvider>
+            </ProductProvider>
+          </OrderProvider>
         </AlertProvider>
 
       </body>
