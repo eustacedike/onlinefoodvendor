@@ -41,7 +41,7 @@ border: 1px solid lightgray;
   background-color: white;
   position: relative;
   padding-top: 850px;
-  padding: 90px 2vw;
+  padding: 90px 3vw 20px 3vw;
   /* padding-right: 50px; */
   /* display: grid; */
   gap: 20px;
@@ -57,7 +57,103 @@ border: 1px solid lightgray;
   position: absolute;
   top: -15%;
   left: 30px;
+
 }
+
+.avatarHover {
+  z-index: 2;
+
+  border-radius: 50%;
+  width: 146px;
+  height: 146px;
+  position: absolute;
+  top: -15%;
+  left: 32px;
+  cursor: pointer;
+  transition: 500ms;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.avatarHover:hover {
+  background-color: rgb(0, 0, 0, 0.5);
+}
+
+.changeAvatar {
+  background: rgb(0, 0, 0, 0.5);
+  /* background: var(--primary-color); */
+  color: white;
+  /* color: black; */
+  border: 2px solid white;
+  padding: 4px 10px;
+  font-size: var(--card-p-font);
+  font-family: var(--primary-font);
+  border-radius: 2px;
+  cursor: pointer;
+
+  display: none;
+}
+
+.avatarHover:hover .changeAvatar {
+  display: block;
+}
+
+.avatarModal {
+  position: fixed;
+  top: 10%;
+  left: 15%;
+  /* height: 400px; */
+  width: 70%;
+  z-index: 11;
+  text-align: right;
+
+  background-color: white;
+  border: 4px solid var(--secondary-color);
+padding: 30px 2vw;
+}
+
+  .avatarModal div {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+
+}
+
+.avatarModalImg {
+  /* border-radius: 10%; */
+  border: 4px solid transparent;
+  width: 150px;
+  height: auto;
+  cursor: pointer;
+  transition: 700ms;
+  /* position: absolute; */
+  /* top: -15%; */
+  /* left: 30px; */
+}
+
+.avatarModalImg:hover {
+  scale: 1.03;
+}
+
+.avatarModal button {
+  font-family: var(--primary-font);
+  padding: 9px 12px;
+  color: white;
+  background-color: limegreen;
+  border: none;
+  font-weight: 800;
+  border-radius: 4px;
+  cursor: pointer;
+  /* margin: 10px 0; */
+  /* width: 25%; */
+}
+
 
 .actions {
   display: flex;
@@ -203,6 +299,41 @@ border: 1px solid lightgray;
 
   .profile {
     width: 100%;
+  }
+
+  .avatarModal {
+    /* position: fixed; */
+    top: 20%;
+    left: 3%;
+    /* height: 400px; */
+    width: 94%;
+    /* z-index: 11; */
+    /* text-align: center; */
+  
+    /* background-color: white; */
+    /* border: 4px solid var(--secondary-color); */
+  padding: 20px 1.5vw;
+  }
+  
+    .avatarModal div {
+    /* display: grid; */
+    /* grid-template-columns: auto auto auto; */
+    /* justify-content: space-around; */
+    /* align-items: center; */
+    gap: 10px;
+  
+  }
+  
+  .avatarModalImg {
+    /* border-radius: 10%; */
+    /* border: 4px solid transparent; */
+    width: 96px;
+    height: auto;
+    cursor: pointer;
+    transition: 700ms;
+    /* position: absolute; */
+    /* top: -15%; */
+    /* left: 30px; */
   }
 
   .section {

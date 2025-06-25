@@ -94,6 +94,17 @@ export default function Contact() {
                             </textarea>
                         </div>
                     </div>
+                    {/* <p className={styles.status}
+                        style={{color: status === "Sending..." ? "var(--primary-color)" : 
+                            status === "Message sent successfully!" ? "limegreen" : "red"
+                        }}
+                        >sending....</p> */}
+                        {status && <p 
+                        className={styles.status}
+                        style={{color: status === "Sending..." ? "var(--primary-color)" : 
+                            status === "Message sent successfully!" ? "limegreen" : "red"
+                        }}
+                        >{status}</p>}
                     <button type="submit" className={styles.sendButton}>
                         <div className="svg-wrapper-1">
                             <div className="svg-wrapper">
@@ -114,7 +125,8 @@ export default function Contact() {
                         <span>Send</span>
                     </button>
                 </form>
-                {status && <p>{status}</p>}
+              
+                
             </div>
             <div className={styles.socials}>
             {/* <Image src={instagramImg} alt="alt" fill objectFit="contain" /> */}

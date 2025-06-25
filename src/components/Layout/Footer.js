@@ -36,8 +36,8 @@ export default function Footer() {
             
                 <ul>
                     <li><Link href="/menu" >Menu</Link></li>
-                    <li><Link href="/menu" >Contact</Link></li>
-                    <li><Link href="/menu" >About</Link></li>
+                    <li><Link href="/contactus" >Contact</Link></li>
+                    <li><Link href="/#aboutus" >About</Link></li>
                     {/* <li><Link href="/menu" style={linkStyle}>Latest</Link></li> */}
                 </ul>
                 <div className={styles.socials}>

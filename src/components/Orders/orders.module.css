@@ -78,6 +78,12 @@
     background-color: #f3f3f3; /* Lighter background for odd rows */
   }
 
+  .orderTable tbody tr:hover {
+    background-color: #e0f2f1; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+  }
+
   .orderDetail {
     padding: 20px 6vw;
     display: flex;

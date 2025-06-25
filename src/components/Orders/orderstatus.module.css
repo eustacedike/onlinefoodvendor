@@ -42,7 +42,7 @@
   
   .orderIcon.active,
   .orderLabel.active {
-    color: var(--secondary-color); /* Green */
+    color: limegreen; /* Green */
   }
   
   .orderIcon.current,

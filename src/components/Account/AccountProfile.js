@@ -2,11 +2,18 @@
 
 import Image from "next/image";
 import styles from "./profile.module.css";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Orders from "../Orders/Orders";
 import { useOrderContext } from "@/context/OrderContext";
 import DataFetch from "@/context/datafetch";
-import avatarImg from "@/public/images/eustace.jpg";
+// import avatarImg from "@/public/images/eustace.jpg";
+import avatar1 from "@/public/images/avatar/avatar1.jpg";
+import avatar2 from "@/public/images/avatar/avatar2.jpg";
+import avatar3 from "@/public/images/avatar/avatar3.jpg";
+import avatar4 from "@/public/images/avatar/avatar4.jpg";
+import avatar5 from "@/public/images/avatar/avatar5.jpg";
+import avatar6 from "@/public/images/avatar/avatar6.jpg";
+
 
 import { MdDeleteForever } from "react-icons/md";
 import { IoIosCheckmarkCircle } from "react-icons/io";
@@ -19,8 +26,10 @@ import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 
 export default function AccountProfile() {
 
+    const avatars = [avatar1, avatar2, avatar3, avatar4, avatar5, avatar6];
+
     const [user, setUser] = useState({
-        avatar: avatarImg,
+        avatar: 3,
         name: "John Doe",
         email: "john@example.com",
         verified: true,
@@ -32,20 +41,31 @@ export default function AccountProfile() {
         ],
     });
 
-  const { orders } = useOrderContext();
+    const { orders } = useOrderContext();
 
-    // const orderHistory = [
-    //     { id: "1234", date: "20-Jun-2025", items: "Shawarma x2", amount: 7000, status: "Delivered", quantity: 10, type: "user" },
-    //     { id: "1229", date: "18-May-2025", items: "Burger x1", amount: 2000, status: "Transit", quantity: 5, type: "guest" },
-    //     { id: "1234", date: "20-Jun-2025", items: "Shawarma x2", amount: 7000, status: "Delivered", quantity: 10 },
-    //     { id: "1229", date: "18-May-2025", items: "Burger x1", amount: 2000, status: "Transit", quantity: 5 },
-    //     { id: "1234", date: "20-Jun-2025", items: "Shawarma x2", amount: 7000, status: "Delivered", quantity: 10 },
-    //     { id: "1229", date: "18-May-2025", items: "Burger x1", amount: 2000, status: "Transit", quantity: 5 },
-    //     { id: "1234", date: "20-Jun-2025", items: "Shawarma x2", amount: 7000, status: "Delivered", quantity: 10 },
-    //     { id: "1229", date: "18-May-2025", items: "Burger x1", amount: 2000, status: "Transit", quantity: 5 },
-    // ];
+    const modalRef = useRef(null);
 
-    const [phoneEdit, setPhoneEdit] = useState(false)
+    const [selected, setSelected] = useState(null);
+    const [avatarEdit, setAvatarEdit] = useState(false); 
+    const [phoneEdit, setPhoneEdit] = useState(false); 
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+          if (modalRef.current && !modalRef.current.contains(event.target)) {
+            setAvatarEdit(false);
+          }
+        }
+    
+        // Attach listener only when modal is open
+        if (avatarEdit) {
+          document.addEventListener('mousedown', handleClickOutside);
+        }
+    
+        return () => {
+          document.removeEventListener('mousedown', handleClickOutside);
+        };
+      }, [avatarEdit]);
+    
 
     return (
 
@@ -54,7 +74,30 @@ export default function AccountProfile() {
 
 
         <div className={styles.container}>
-            <DataFetch/>
+            <DataFetch />
+
+            <div ref={modalRef} className={styles.avatarModal} style={{display: avatarEdit? null : "none"}}>
+                <span onClick={()=>setAvatarEdit(false)} style={{cursor: "pointer"}}>&#10060; </span>
+                <div>
+                {avatars.map((av, index) => {
+                    return <Image className={styles.avatarModalImg}
+                        key={index}
+                        src={av}
+                        alt=""
+                        width={0}
+                        height={0}
+                        sizes="60vw"
+                        onClick={()=>setSelected(index)}
+                        style={{border: selected === index? "4px solid var(--primary-color)" : null}}
+
+                    />
+                }
+
+                )}
+                </div> <br/>
+                <button>Save</button>
+            </div>
+
             <div className={styles.profile}>
                 <div className={styles.header}>
                     <h2>{user.name}</h2>
@@ -65,8 +108,12 @@ export default function AccountProfile() {
                 </div>
 
                 <div className={styles.section}>
+                    <span className={styles.avatarHover}>
+
+                        <button className={styles.changeAvatar} onClick={()=>setAvatarEdit(true)}>Change</button>
+                    </span>
                     <Image className={styles.avatar}
-                        src={user.avatar}
+                        src={avatars[user.avatar]}
                         alt=""
                         width={0}
                         height={0}
@@ -81,17 +128,17 @@ export default function AccountProfile() {
                             <input
                                 value={user.phone}
                                 disabled={!phoneEdit}
-                                style={{border: phoneEdit? "2px solid blue": null}}
-                                // {phoneEdit? disabled : ""}
+                                style={{ border: phoneEdit ? "2px solid blue" : null }}
+                            // {phoneEdit? disabled : ""}
                             />
-                           {phoneEdit?
-                           <button className={styles.editBtn} style={{backgroundColor: "limegreen"}}>Save</button> :
-                           <button className={styles.editBtn} onClick={()=>setPhoneEdit(true)}>Edit</button> 
-                           } 
-                            
+                            {phoneEdit ?
+                                <button className={styles.editBtn} style={{ backgroundColor: "limegreen" }}>Save</button> :
+                                <button className={styles.editBtn} onClick={() => setPhoneEdit(true)}>Edit</button>
+                            }
+
                         </div>
 
-                        <br/>
+                        <br />
 
                         <h4>Email Address</h4>
                         <div className={styles.detail}>
@@ -100,22 +147,22 @@ export default function AccountProfile() {
                                 disabled
                             />
                             {
-                                user.verified? <button style={{backgroundColor: "limegreen"}} className={styles.editBtn}>Verified </button> :
-                                <button className={styles.editBtn}>Verify</button>
+                                user.verified ? <button style={{ backgroundColor: "limegreen" }} className={styles.editBtn}>Verified </button> :
+                                    <button className={styles.editBtn}>Verify</button>
                             }
-                            
+
                         </div>
 
-                        <br/>
+                        <br />
 
-                        
+
                         <div className={styles.detail}>
-                        <h4>Delivery Addresses</h4>  <button
-                        className={styles.addBtn}
-                        style={{display: user.addresses.length >= 3? "none" : null}}
-                        >Add</button>
-</div>
-                        <hr/>
+                            <h4>Delivery Addresses</h4>  <button
+                                className={styles.addBtn}
+                                style={{ display: user.addresses.length >= 3 ? "none" : null }}
+                            >Add</button>
+                        </div>
+                        <hr />
                         {user.addresses.map((address, index) => (
                             <div className={styles.detail} key={index}>
                                 {/* <input
@@ -124,8 +171,8 @@ export default function AccountProfile() {
                                 /> */}
                                 <p>{address.place}</p>
                                 {index === 0 ?
-                                <span style={{color: "limegreen", cursor: "pointer"}}> <IoIosCheckmarkCircle /></span> :
-                                <span style={{color: "black", cursor: "pointer"}}> <IoIosCheckmarkCircleOutline /></span>}
+                                    <span style={{ color: "limegreen", cursor: "pointer" }}> <IoIosCheckmarkCircle /></span> :
+                                    <span style={{ color: "black", cursor: "pointer" }}> <IoIosCheckmarkCircleOutline /></span>}
                                 <button className={styles.deleteBtn}><MdDeleteForever /></button>
                             </div>
                         ))}
