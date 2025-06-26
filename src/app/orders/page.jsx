@@ -32,6 +32,8 @@ export default function OrdersPage() {
         <div className={styles.orderPage}>
             <DataFetch/>
                 <h2 className="title">My Orders <hr /></h2>
+      <p className="subtitle">Click on an order to view more details </p>
+
             <Orders orders={orders} />
         </div>
     );
