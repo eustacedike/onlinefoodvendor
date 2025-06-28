@@ -3,13 +3,34 @@
 'use client';
 
 import styles from './auth.module.css';
-
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 import { login, signup } from '@/actions/auth';
+import { createClient } from '@/utils/supabase/client'; // must use client here
+
 
 export default function Auth({content}) {
 
-console.log(login)
+// console.log(login)
+  const router = useRouter();
   
+    useEffect(() => {
+      const supabase = createClient()
+  
+      const fetchProfile = async () => {
+        const { data: userData, error: userError } = await supabase.auth.getUser()
+  
+        if (userData?.user) {
+          router.push('/profile')
+          return
+        }
+
+      }
+  
+      fetchProfile()
+    }, [])
+    
+    
   return (
     <form className={styles.loginContainer}>
       <h2 className={styles.title}>{content} <hr /></h2>

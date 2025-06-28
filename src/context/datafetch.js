@@ -12,6 +12,9 @@ import hero4 from '@/public/images/hero7.png';
 // import hero2 from "../../public/images/hero5.png";
 // import hero3 from "../../public/images/hero6.png";
 
+import { createClient } from '@/utils/supabase/client'
+
+
 export default function DataFetch() {
   const { setProducts, setProductGroups } = useProductContext();
   // const { setProductGroups } = useProductContext();
@@ -379,16 +382,42 @@ const ordersData = [
 ];
 
 
+ useEffect(() => {
+    const supabase = createClient()
+
+    const fetchProducts = async () => {
+  
+
+      const { data: productsDB, error: productsError } = await supabase
+        .from('products')
+        .select('*')
+
+      if (productsError) {
+        console.error('Error fetching products:', profileError)
+        setProducts(null)
+      } else {
+        setProducts(productsDB)
+      }
+
+      // setLoading(false)
+    }
+
+    fetchProducts()
+  }, [])
+
+
+
   useEffect(() => {
-    async function fetchProducts() {
+    async function fetchOrders() {
     //   const res = await fetch('/api/products');
     //   const data = await res.json();
-      setProducts(productsData);
+
+      // setProducts(productsData);
       setProductGroups(productGroupsData);
       setOrders(ordersData);
     }
 
-    fetchProducts();
+    fetchOrders();
   }, [setProducts, setProductGroups, setOrders]);
 
   // useEffect(() => {

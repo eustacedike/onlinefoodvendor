@@ -23,9 +23,11 @@ export async function login(formData: FormData) {
     // alert('wrong email/password')
   }
 
-  console.log(data)
-  revalidatePath('/profile', 'layout')
+  // console.log(data)
+  revalidatePath('/profile')
+  revalidatePath('/cart', 'layout')  
   redirect('/profile')
+  // location.reload();
 }
 
 export async function signup(formData: FormData) {
@@ -46,4 +48,19 @@ export async function signup(formData: FormData) {
 
   revalidatePath('/', 'layout')
   redirect('/')
+}
+
+export async function logout() {
+  const supabase = await createClient()
+
+  const { error } = await supabase.auth.signOut()
+
+  if (error) {
+    console.error('Logout error:', error)
+    alert('Failed to logout')
+  } else {
+    // window.location.href = '/'
+    revalidatePath('/cart', 'layout') 
+    redirect('/') // or replace with router.push() if in a client component
+  }
 }

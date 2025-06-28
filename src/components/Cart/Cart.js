@@ -59,6 +59,7 @@ export default function Cart() {
     }, [products, cartStore]);
 
 
+    // console.log(cartItems);
 
 
 

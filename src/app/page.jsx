@@ -7,6 +7,8 @@ import styles from "./page.module.css";
 import Hero from "../components/Hero/Hero";
 import ProductList from "@/components/ProductList/ProductList";
 
+// import { useAuthUser } from "@/hooks/useAuthUser";
+
 import { useProductContext } from '@/context/ProductContext';
 import DataFetch from "@/context/datafetch";
 import Advert from "@/components/Advert/Advert";
@@ -27,6 +29,10 @@ export default function Home() {
     const matchedGroup = productGroups.find(group => group.name === product.group);
     return matchedGroup && matchedGroup.id === active;
   });
+
+  // const { user, loading, profile } = useAuthUser();
+  // console.log(user);
+  // console.log(profile);
 
   return (
     <div className={styles.page}>
