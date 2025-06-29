@@ -20,90 +20,90 @@ export default function DataFetch() {
   // const { setProductGroups } = useProductContext();
   const { setOrders } = useOrderContext();
 
-const productsData = [
-  { id: 1, sku:"shawarmaa", img: hero1, title: "Shawarma", price: 3500, group: "Snack", discount: 20, count: 10,
-    description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
-},
-  { id: 2, sku:"burgera", img: hero2, title: "Burger", price: 2000, group: "Meal", discount: null, count: 5,
-    description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
-},
-  { id: 3, sku:"kebaba", img: hero3, title: "Kebabs", price: 1700, group: "Fries", discount: 50, count: 2 ,
-    description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
-},
-  { id: 16, sku:"mochaa", img: hero4, title: "Mocha", price: 3150, group: "Drink", discount: 10, count: 7 ,
-    description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
-},
-  { id: 4, sku:"shawarmab", img: hero1, title: "Shawarma", price: 3500, group: "Snack", discount: 20, count: 0 ,
-    description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
-},
-  { id: 5, sku:"burgerb", img: hero2, title: "Burger", price: 2000, group: "Meal", discount: null, count: 5 ,
-    description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
-},
-  { id: 6, sku:"kebabb", img: hero3, title: "Kebabs", price: 1700, group: "Fries", discount: 50, count: 2 ,
-    description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
-},
-{ id: 17, sku:"mochab", img: hero4, title: "Mocha", price: 3150, group: "Drink", discount: 10, count: 7 ,
-    description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
-},
-  { id: 7, sku:"shawarmac", img: hero1, title: "Shawarma", price: 3500, group: "Snack", discount: 20, count: 10,
-    description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
-},
-  { id: 8, sku:"burgerc", img: hero2, title: "Burger", price: 2000, group: "Meal", discount: null, count: 5 ,
-    description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
-},
-  { id: 9, sku:"kebabc", img: hero3, title: "Kebabs", price: 1700, group: "Fries", discount: 50, count: 2 ,
-    description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
-},
-{ id: 18, sku:"mochac", img: hero4, title: "Mocha", price: 3150, group: "Drink", discount: 10, count: 0 ,
-    description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
-},
-  { id: 10, sku:"shawarmad", img: hero1, title: "Shawarma", price: 3500, group: "Snack", discount: 20, count: 10,
-    description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
-},
-  { id: 11, sku:"burgerd", img: hero2, title: "Burger", price: 2000, group: "Meal", discount: null, count: 5 ,
-    description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
-},
-  { id: 12, sku:"kebabd", img: hero3, title: "Kebabs", price: 1700, group: "Fries", discount: 50, count: 2 ,
-    description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
-},
-{ id: 19, sku:"mochad", img: hero4, title: "Mocha", price: 3150, group: "Drink", discount: 10, count: 7 ,
-    description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
-},
-  { id: 13, sku:"shawarmae", img: hero1, title: "Shawarma", price: 3500, group: "Snack", discount: 20, count: 10,
-    description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
-},
-  { id: 14, sku:"burgere", img: hero2, title: "Burger", price: 2000, group: "Meal", discount: null, count: 5 ,
-    description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
-},
-  { id: 15, sku:"kebabe", img: hero3, title: "Kebabs", price: 1700, group: "Fries", discount: 50, count: 2 ,
-    description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
-},
-{ id: 20, sku:"mochae", img: hero4, title: "Mocha", price: 3150, group: "Drink", discount: 10, count: 7 ,
-    description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
-},
-];
+// const productsData = [
+//   { id: 1, sku:"shawarmaa", img: hero1, title: "Shawarma", price: 3500, group: "Snack", discount: 20, count: 10,
+//     description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
+// },
+//   { id: 2, sku:"burgera", img: hero2, title: "Burger", price: 2000, group: "Meal", discount: null, count: 5,
+//     description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
+// },
+//   { id: 3, sku:"kebaba", img: hero3, title: "Kebabs", price: 1700, group: "Fries", discount: 50, count: 2 ,
+//     description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
+// },
+//   { id: 16, sku:"mochaa", img: hero4, title: "Mocha", price: 3150, group: "Drink", discount: 10, count: 7 ,
+//     description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
+// },
+//   { id: 4, sku:"shawarmab", img: hero1, title: "Shawarma", price: 3500, group: "Snack", discount: 20, count: 0 ,
+//     description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
+// },
+//   { id: 5, sku:"burgerb", img: hero2, title: "Burger", price: 2000, group: "Meal", discount: null, count: 5 ,
+//     description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
+// },
+//   { id: 6, sku:"kebabb", img: hero3, title: "Kebabs", price: 1700, group: "Fries", discount: 50, count: 2 ,
+//     description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
+// },
+// { id: 17, sku:"mochab", img: hero4, title: "Mocha", price: 3150, group: "Drink", discount: 10, count: 7 ,
+//     description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
+// },
+//   { id: 7, sku:"shawarmac", img: hero1, title: "Shawarma", price: 3500, group: "Snack", discount: 20, count: 10,
+//     description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
+// },
+//   { id: 8, sku:"burgerc", img: hero2, title: "Burger", price: 2000, group: "Meal", discount: null, count: 5 ,
+//     description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
+// },
+//   { id: 9, sku:"kebabc", img: hero3, title: "Kebabs", price: 1700, group: "Fries", discount: 50, count: 2 ,
+//     description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
+// },
+// { id: 18, sku:"mochac", img: hero4, title: "Mocha", price: 3150, group: "Drink", discount: 10, count: 0 ,
+//     description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
+// },
+//   { id: 10, sku:"shawarmad", img: hero1, title: "Shawarma", price: 3500, group: "Snack", discount: 20, count: 10,
+//     description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
+// },
+//   { id: 11, sku:"burgerd", img: hero2, title: "Burger", price: 2000, group: "Meal", discount: null, count: 5 ,
+//     description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
+// },
+//   { id: 12, sku:"kebabd", img: hero3, title: "Kebabs", price: 1700, group: "Fries", discount: 50, count: 2 ,
+//     description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
+// },
+// { id: 19, sku:"mochad", img: hero4, title: "Mocha", price: 3150, group: "Drink", discount: 10, count: 7 ,
+//     description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
+// },
+//   { id: 13, sku:"shawarmae", img: hero1, title: "Shawarma", price: 3500, group: "Snack", discount: 20, count: 10,
+//     description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
+// },
+//   { id: 14, sku:"burgere", img: hero2, title: "Burger", price: 2000, group: "Meal", discount: null, count: 5 ,
+//     description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
+// },
+//   { id: 15, sku:"kebabe", img: hero3, title: "Kebabs", price: 1700, group: "Fries", discount: 50, count: 2 ,
+//     description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
+// },
+// { id: 20, sku:"mochae", img: hero4, title: "Mocha", price: 3150, group: "Drink", discount: 10, count: 7 ,
+//     description: "Delicious chicken shawarma with fresh vegetables and sauce. Shawarma is a popular Middle Eastern street food consisting of meat (usually lamb, chicken, or beef) shaved from a vertical rotisserie and typically served in a wrap or with pita bread. It's known for its distinctive flavor from marination and spices. "
+// },
+// ];
 
-const productGroupsData = [
-  { id: 1, name: "Snack" },
-  { id: 2, name: "Meal" },
-  { id: 3, name: "Fries" },
-  { id: 4, name: "Drink" },
-  { id: 5, name: "Corporate" },
-  { id: 6, name: "Salad" },
-  { id: 7, name: "Shake" },
-  { id: 8, name: "Others" },
-];
+// const productGroupsData = [
+//   { id: 1, name: "Snack" },
+//   { id: 2, name: "Meal" },
+//   { id: 3, name: "Fries" },
+//   { id: 4, name: "Drink" },
+//   { id: 5, name: "Corporate" },
+//   { id: 6, name: "Salad" },
+//   { id: 7, name: "Shake" },
+//   { id: 8, name: "Others" },
+// ];
 
-const ordersDataOld = [
-  { id: "000001", ref: "gfshyhfsh658765uytr3276a", date: "20-Jun-2025", items: [{sku: "shawarmaa", qty: 2}], amount: 7000, status: "Delivered", type: "user" },
-  { id: "001001", ref: "gfshyhfsh658765uytr3276b", date: "18-May-2025", items: [{sku: "shawarmaa", qty: 2}, {sku: "shawarmab", qty : 5}], amount: 2000, status: "enroute", type: "guest" },
-  { id: "000067", ref: "gfshyhfsh658765uytr3276c", date: "20-Jun-2025", items: "Shawarma x2", amount: 7000, status: "Delivered", type: "user" },
-  { id: "000345", ref: "gfshyhfsh658765uytr3276d", date: "18-May-2025", items: "Burger x1", amount: 2000, status: "enroute", type: "guest" },
-  { id: "007893", ref: "gfshyhfsh658765uytr3276e", date: "20-Jun-2025", items: "Shawarma x2", amount: 7000, status: "Delivered", type: "user" },
-  { id: "000002", ref: "gfshyhfsh658765uytr3276f", date: "18-May-2025", items: "Burger x1", amount: 2000, status: "enroute", type: "guest" },
-  { id: "020301", ref: "gfshyhfsh658765uytr3276g", date: "20-Jun-2025", items: "Shawarma x2", amount: 7000, status: "Delivered", type: "user" },
-  { id: "990585", ref: "gfshyhfsh658765uytr3276h", date: "18-May-2025", items: "Burger x1", amount: 2000, status: "enroute", type: "guest" },
-];
+// const ordersDataOld = [
+//   { id: "000001", ref: "gfshyhfsh658765uytr3276a", date: "20-Jun-2025", items: [{sku: "shawarmaa", qty: 2}], amount: 7000, status: "Delivered", type: "user" },
+//   { id: "001001", ref: "gfshyhfsh658765uytr3276b", date: "18-May-2025", items: [{sku: "shawarmaa", qty: 2}, {sku: "shawarmab", qty : 5}], amount: 2000, status: "enroute", type: "guest" },
+//   { id: "000067", ref: "gfshyhfsh658765uytr3276c", date: "20-Jun-2025", items: "Shawarma x2", amount: 7000, status: "Delivered", type: "user" },
+//   { id: "000345", ref: "gfshyhfsh658765uytr3276d", date: "18-May-2025", items: "Burger x1", amount: 2000, status: "enroute", type: "guest" },
+//   { id: "007893", ref: "gfshyhfsh658765uytr3276e", date: "20-Jun-2025", items: "Shawarma x2", amount: 7000, status: "Delivered", type: "user" },
+//   { id: "000002", ref: "gfshyhfsh658765uytr3276f", date: "18-May-2025", items: "Burger x1", amount: 2000, status: "enroute", type: "guest" },
+//   { id: "020301", ref: "gfshyhfsh658765uytr3276g", date: "20-Jun-2025", items: "Shawarma x2", amount: 7000, status: "Delivered", type: "user" },
+//   { id: "990585", ref: "gfshyhfsh658765uytr3276h", date: "18-May-2025", items: "Burger x1", amount: 2000, status: "enroute", type: "guest" },
+// ];
 
 const ordersData = [
   {
@@ -399,11 +399,22 @@ const ordersData = [
         setProducts(productsDB)
       }
 
+
+      const { data: productGroupsDB, error: productGroupsError } = await supabase
+      .from('product_groups')
+      .select('*')
+
+    if (productsError) {
+      console.error('Error fetching productGroups:', profileError)
+      setProducts(null)
+    } else {
+      setProductGroups(productGroupsDB)
+    }
       // setLoading(false)
     }
 
     fetchProducts()
-  }, [])
+  }, [setProducts, setProductGroups])
 
 
 
@@ -413,12 +424,12 @@ const ordersData = [
     //   const data = await res.json();
 
       // setProducts(productsData);
-      setProductGroups(productGroupsData);
+      // setProductGroups(productGroupsData);
       setOrders(ordersData);
     }
 
     fetchOrders();
-  }, [setProducts, setProductGroups, setOrders]);
+  }, [setOrders]);
 
   // useEffect(() => {
   //   async function fetchOrders() {

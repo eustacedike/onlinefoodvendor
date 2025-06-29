@@ -13,7 +13,7 @@ const imageArray = [
     hero1, hero2, hero3
   ];
 
-export default function Hero() {
+export default function Hero({mainText, subText, heroImgs}) {
 
     // const linkStyle = {
     //     textDecoration: "none",
@@ -22,12 +22,12 @@ export default function Hero() {
     return (
         <div className={styles.hero}>
             <div className={styles.heroContent}>
-                <h1>Delicious Meals Delivered Fresh to Your Door</h1>
-                <p>Craving something tasty? Explore our chef-crafted menu and enjoy warm, homemade dishes delivered fast and fresh — no matter where you are.</p>
+                <h1>{mainText}</h1>
+                <p>{subText}</p>
                 <Link href="/menu" className={styles.heroButton}>Explore Our Menu</Link>
             </div>
             <div className={styles.heroImage}>
-                <Carousel images={imageArray} imageClassName={styles.heroImage} />
+                <Carousel images={heroImgs} imageClassName={styles.heroImage} />
 
                 {/* <img src={hero1} alt="Delicious food" /> */}
                 {/* <Image

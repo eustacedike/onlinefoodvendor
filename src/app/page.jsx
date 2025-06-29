@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./page.module.css";
@@ -11,6 +11,9 @@ import ProductList from "@/components/ProductList/ProductList";
 
 import { useProductContext } from '@/context/ProductContext';
 import DataFetch from "@/context/datafetch";
+import { createClient } from "@/utils/supabase/client";
+
+
 import Advert from "@/components/Advert/Advert";
 
 import { FaLeaf } from "react-icons/fa";
@@ -20,10 +23,13 @@ import bannerImg from "@/public/images/banner1.png";
 import advertImg from "@/public/images/advert.png";
 import logo from "@/public/images/logo.png";
 
+
+
 export default function Home() {
 
   const { products, productGroups } = useProductContext();
   const [active, setActive] = useState(1);
+  const [components, setComponents] = useState(null);
 
   const filteredProducts = products.filter(product => {
     const matchedGroup = productGroups.find(group => group.name === product.group);
@@ -34,11 +40,42 @@ export default function Home() {
   // console.log(user);
   // console.log(profile);
 
+  
+   useEffect(() => {
+      const supabase = createClient()
+  
+      const fetchComponents = async () => {
+    
+  
+        const { data: componentsData, error: componentsError } = await supabase
+          .from('components')
+          .select('*')
+  
+        if (componentsError) {
+          console.error('Error fetching components:', componentsError)
+          setComponents(null)
+        } else {
+          setComponents(componentsData)
+        }
+ 
+      }
+  
+      fetchComponents()
+    }, [setComponents])
+
+    console.log(components);
+    // console.log(components?.find(component => component.id === "banner").value);
+
   return (
     <div className={styles.page}>
 
       <main className={styles.main}>
-        <Hero />
+        <Hero 
+        mainText={components?.find(component => component.id === "maintext").value}
+        subText={components?.find(component => component.id === "subtext").value}
+        heroImgs={components?.find(component => component.id === "hero_imgs").value}
+        
+        />
         <DataFetch />
         <h2 className="title">Our Menu <IoFastFood /> <hr /></h2>
         <p className="subtitle">
@@ -63,7 +100,7 @@ export default function Home() {
         {/* <Link href="/menu" className="titleButton">See More</Link> */}
 
 
-        <Advert AdBanner={advertImg} />
+        <Advert AdBanner={components?.find(component => component.id === "banner").value} />
 
         <div className={styles.banner}>
           <Image

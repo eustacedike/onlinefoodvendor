@@ -4,12 +4,12 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import styles from './carousel.module.css';
 
-export default function Carousel({ images, imageClassName }) {
+export default function Carousel({ images = [], imageClassName }) {
   const [index, setIndex] = useState(0);
   const carouselRef = useRef(null);
   const transitionRef = useRef(true); // to disable transition temporarily
 
-  const totalSlides = images.length;
+  const totalSlides = images?.length;
 
   // Clone first slide
   const extendedImages = [...images, images[0]];
@@ -47,13 +47,16 @@ export default function Carousel({ images, imageClassName }) {
       >
         {extendedImages.map((src, i) => (
           <div key={i} className={styles.card}>
-            <Image
+            {/* <Image
               src={src}
               alt={`Slide ${i + 1}`}
               layout='responsive'
               className={imageClassName}
               style={{ objectFit: 'contain' }}
-            />
+              width={0}
+              height={0}
+            /> */}
+            <img  className={imageClassName}  src={src}/>
           </div>
         ))}
       </div>
