@@ -12,6 +12,7 @@ import ProductList from "@/components/ProductList/ProductList";
 import { useProductContext } from '@/context/ProductContext';
 import DataFetch from "@/context/datafetch";
 import { createClient } from "@/utils/supabase/client";
+import { useComponents } from "@/hooks/useComponents";
 
 
 import Advert from "@/components/Advert/Advert";
@@ -29,41 +30,43 @@ export default function Home() {
 
   const { products, productGroups } = useProductContext();
   const [active, setActive] = useState(1);
-  const [components, setComponents] = useState(null);
+  // const [components, setComponents] = useState(null);
 
   const filteredProducts = products.filter(product => {
     const matchedGroup = productGroups.find(group => group.name === product.group);
     return matchedGroup && matchedGroup.id === active;
   });
 
+   const { components, socials } = useComponents();
+
   // const { user, loading, profile } = useAuthUser();
   // console.log(user);
   // console.log(profile);
 
   
-   useEffect(() => {
-      const supabase = createClient()
+  //  useEffect(() => {
+  //     const supabase = createClient()
   
-      const fetchComponents = async () => {
+  //     const fetchComponents = async () => {
     
   
-        const { data: componentsData, error: componentsError } = await supabase
-          .from('components')
-          .select('*')
+  //       const { data: componentsData, error: componentsError } = await supabase
+  //         .from('components')
+  //         .select('*')
   
-        if (componentsError) {
-          console.error('Error fetching components:', componentsError)
-          setComponents(null)
-        } else {
-          setComponents(componentsData)
-        }
+  //       if (componentsError) {
+  //         console.error('Error fetching components:', componentsError)
+  //         setComponents(null)
+  //       } else {
+  //         setComponents(componentsData)
+  //       }
  
-      }
+  //     }
   
-      fetchComponents()
-    }, [setComponents])
+  //     fetchComponents()
+  //   }, [setComponents])
 
-    console.log(components);
+    // console.log(socials);
     // console.log(components?.find(component => component.id === "banner").value);
 
   return (
@@ -127,20 +130,19 @@ export default function Home() {
             <h3>ABOUT US</h3>
             <hr />
             <p>
-              Our menu is designed to satisfy your cravings and to deliver bold, comforting flavors that hit the spot every time.
-              Whether you're dining in or opting for delivery, you’ll enjoy a scrumptious meal that truly satisfies your taste buds.
-              So why wait? Order online and treat yourself to a food adventure that will satisfy your tatstebuds and leave you wanting to come back for seconds.
+            {components?.find(component => component.id === "aboutus").value}
             </p>
 
             <div>
-                <Image
-                    src={logo}    
+                {/* <Image
+                    src={components?.find(component => component.id === "logo").value}    
                     alt="Logo"
                     width={30}
                     height={30}
                     priority
-                />
-                <h2 >Aebis Unique Menu</h2>
+                /> */}
+                <img height={30} width={30} src={components?.find(component => component.id === "logo").value}/>
+                <h2 >{components?.find(component => component.id === "business_name").value}</h2>
             </div>
           </div>
 

@@ -68,7 +68,7 @@
   .heroImage {
     border-radius: 12px;
     overflow: hidden;
-    width: 36%;
+    width: 100%;
     max-width: 600px;
     /* border: 2px solid blue; */
     /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */

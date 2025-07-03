@@ -56,7 +56,7 @@ export default function Carousel({ images = [], imageClassName }) {
               width={0}
               height={0}
             /> */}
-            <img  className={imageClassName}  src={src}/>
+            <img  className={imageClassName}  src={src}    style={{ objectFit: 'contain' }}/>
           </div>
         ))}
       </div>
