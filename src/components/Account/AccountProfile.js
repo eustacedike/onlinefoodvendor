@@ -203,7 +203,7 @@ export default function AccountProfile() {
                         <h4>Email Address</h4>
                         <div className={styles.detail}>
                             <input
-                                value={user?.email}
+                                value={user?.email || ''}
                                 disabled
                             />
                             {

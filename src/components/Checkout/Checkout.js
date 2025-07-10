@@ -23,6 +23,7 @@ export default function Checkout() {
         phoneNo: '',
         location: null,
         address: '',
+        verified: false,
         addressCords: {
             lat: 0, 
             lng: 0

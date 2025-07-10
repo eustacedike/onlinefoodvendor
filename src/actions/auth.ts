@@ -48,8 +48,18 @@ export async function signup(_prevState: any, formData: FormData) {
 
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
+  const confirmPassword = formData.get('confirmPassword') as string;
   const name = formData.get('name') as string;
   const phone = formData.get('phone') as string;
+
+   // ✅ Password confirmation validation
+   if (password !== confirmPassword) {
+    return {
+      error: "Passwords do not match",
+      code: 400,
+      type: 'validation_error',
+    };
+  }
 
   const { data: authData, error: authError } = await supabase.auth.signUp({
     email,
@@ -91,4 +101,20 @@ export async function logout() {
     revalidatePath('/cart', 'layout') 
     redirect('/') // or replace with router.push() if in a client component
   }
+}
+
+
+export async function requestPasswordReset(email: string) {
+  const supabase = await createClient();
+
+  const { error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/reset-password`, // 👈 where the user is taken to complete the reset
+  });
+
+  if (error) {
+    console.error('Error sending reset email:', error.message);
+    return { error: error.message };
+  }
+
+  return { success: true };
 }

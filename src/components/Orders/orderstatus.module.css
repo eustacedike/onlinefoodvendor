@@ -30,8 +30,22 @@
     margin-bottom: 0.5rem;
     transition: all 0.3s ease;
     color: #ccc;
-
+border-radius: 50%;
     z-index: 2;
+  }
+
+  .orderCenter {
+    position: absolute;
+    top: 18%;
+    left: 47%;
+ 
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    width: 10px;
+    height: 10px;
+    /* background-color: red; */
+    border-radius: 50%;
   }
   
   .orderLabel {
@@ -66,6 +80,19 @@
   
   .orderLine.fill {
     background-color: limegreen;
+  }
+
+  .pulse {
+    animation: pulse-animation 2s infinite;
+  }
+  
+  @keyframes pulse-animation {
+    0% {
+      box-shadow: 0 0 0 0px rgba(50, 205, 50, 0.7);
+    }
+    100% {
+      box-shadow: 0 0 0 21px rgba(50, 205, 50, 0);
+    }
   }
   
 

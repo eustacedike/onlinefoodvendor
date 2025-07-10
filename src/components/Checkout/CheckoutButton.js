@@ -6,22 +6,22 @@
 import { useRouter } from 'next/navigation';
 import style from './checkout.module.css'; // Assuming you have some styles
 // import { GrSend } from "react-icons/gr";
-import { useAlert } from '@/context/AlertContext';
+// import { useAlert } from '@/context/AlertContext';
 
-export default function CheckoutButton({ email, amount, fullname, phoneno, address, cords, setError }) {
+export default function CheckoutButton({ email, amount, fullname, phoneno, address, cords, verified, setError, subtotal }) {
   const router = useRouter();
 
-   const { showAlert } = useAlert();
+  //  const { showAlert } = useAlert();
   
-   const alertBox = (str, msg, bgc, hrc) => {
-    console.log("a");
-    showAlert({
-         strong: str,
-        message: msg,
-        bgColor: bgc, // light green
-        hrColor: hrc,
-      });
-  };
+  //  const alertBox = (str, msg, bgc, hrc) => {
+  //   console.log("a");
+  //   showAlert({
+  //        strong: str,
+  //       message: msg,
+  //       bgColor: bgc, // light green
+  //       hrColor: hrc,
+  //     });
+  // };
 
   const handleCheckout = async () => {
     try {
@@ -33,6 +33,19 @@ export default function CheckoutButton({ email, amount, fullname, phoneno, addre
       const phoneRegex = /^0\d{10}$/; // Starts with 0 and must be 11 digits total
       function isWithinLagos(lat, lng) {
         return lat >= 6.3 && lat <= 6.7 && lng >= 3.0 && lng <= 3.6;
+      }
+
+      if (!verified) {
+        // alertBox("Failed!",'Please enter your full name','#ff0000','#ffffff');
+        setError("Please verify your email address first");
+        // alert('Full name is required');
+        return;
+      }
+
+      if (subtotal <= 0) {
+        // alertBox("Failed!",'Please add items to your cart before checking out','#ff0000','#ffffff');
+        setError("Please add items to your cart before checking out");
+        return;
       }
 
       if (!fullname.trim()) {

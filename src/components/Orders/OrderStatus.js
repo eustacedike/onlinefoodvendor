@@ -23,6 +23,9 @@ export default function OrderStatus({ status }) {
               className={`${styles.orderIcon} ${isActive ? `${styles.active}` : ''} ${isCurrent ? `${styles.current}` : ''}`}
             >
               {step.icon}
+              <span 
+              className={`${styles.orderCenter} ${isCurrent && index !== steps.length - 1 ? `${styles.pulse}` : ''}`}
+              ></span>
             </div>
             <span
               className={`${styles.orderLabel} ${isActive ? `${styles.active}` : ''} ${isCurrent ? `${styles.current}` : ''}`}

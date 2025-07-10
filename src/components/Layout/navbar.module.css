@@ -60,7 +60,7 @@ font-size: var(--h3-font);
 }
 
 .navbarButtons {
-    width: 10vw;
+    width: 7vw;
     display: flex;
     justify-content: space-between;
     /* border: 2px solid black; */
@@ -70,7 +70,7 @@ font-size: var(--h3-font);
     background: none;
     border: none;
     color: white;
-    font-size: 20px;
+    font-size: 24px;
     /* font-family: var(--font-dancing-script); */
     cursor: pointer;
     position: relative;
@@ -156,6 +156,7 @@ color: var(--primary-color);
         width: 24px;
         height: 15px;
         cursor: pointer;
+        margin: auto;
         /* border: 2px solid red; */
     }
 

@@ -136,8 +136,10 @@ export default function OrderSummary({formData}) {
                 fullname={formData.fullname}
                 phoneno={formData.phoneNo}
                 address={formData.address}
+                subtotal={subtotal}
                 amount={Math.round(total) * 100}
                 cords={formData.addressCords}
+                verified={formData.verified}
                 setError={setError}
             /> 
            {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}

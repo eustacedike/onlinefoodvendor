@@ -55,7 +55,7 @@ border: 1px solid lightgray;
   width: 150px;
   height: auto;
   position: absolute;
-  top: -15%;
+  top: -25%;
   left: 30px;
 
 }
@@ -67,7 +67,7 @@ border: 1px solid lightgray;
   width: 146px;
   height: 146px;
   position: absolute;
-  top: -15%;
+  top: -25%;
   left: 32px;
   cursor: pointer;
   transition: 500ms;

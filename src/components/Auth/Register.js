@@ -60,7 +60,13 @@ export default function Register() {
 
       <div className={styles.inputGroup}>
       <div>
-        <label htmlFor="password">Password</label>
+        <label htmlFor="confirmPassword">Password</label>
+        <input type="password" id="confirmPassword" name='confirmPassword' placeholder="••••••••" required />
+      </div>
+      </div>
+      <div className={styles.inputGroup}>
+      <div>
+        <label htmlFor="password">Confirm Password</label>
         <input type="password" id="password" name='password' placeholder="••••••••" required />
       </div>
       </div>

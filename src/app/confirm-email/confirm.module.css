@@ -4,7 +4,7 @@
     margin: 40px auto;
     padding: 40px;
     background-color: rgb(255, 255, 255, 0.8);
-    border-radius: 12px;
+    border-radius: 5px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     font-family: 'Segoe UI', sans-serif;
     text-align: center;
@@ -16,7 +16,7 @@
     font-weight: bold;
     margin-bottom: 20px;
     color: var(--primary-color);
-    font-family: var(--secondary-font);
+    font-family: var(--primary-font);
   }
   
   .text {
@@ -41,5 +41,6 @@
     margin-top: 30px;
     font-size: 14px;
     color: #999;
+    font-family: var(--secondary-font);
   }
   
