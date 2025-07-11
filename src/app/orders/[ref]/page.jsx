@@ -25,7 +25,7 @@ export default function OrderPage() {
  
     return ( <div >
         <DataFetch />
-        <h2 className="title">Order {order?.id} <hr /></h2>
+        <h2 className="title">Order {order?.six_digit_id} <hr /></h2>
         {order ? (
           <OrderDetail
             order={order}

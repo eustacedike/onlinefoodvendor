@@ -12,7 +12,16 @@ export default function OrderDetail({ order }) {
 
 
     // const [orderItems, setOrderItems] = useState([]);
-
+    const options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        timeZoneName: 'shortOffset', // or 'longOffset' or 'short' or 'long'
+        // timeZone: 'Africa/Lagos' // Explicitly set timezone for consistency, though default is often user's local
+      };
 
 
     return (
@@ -25,8 +34,8 @@ export default function OrderDetail({ order }) {
                 {order.items.map(eachItem => {
                     return (
                         <div className={styles.itemsQuantity} key={eachItem.sku}>
-                            <span>{eachItem.title} &nbsp; (x{eachItem.qty})</span>
-                            <span className={styles.amount}>₦{(eachItem.price) * eachItem.qty}</span>
+                            <span>{eachItem.name} &nbsp; (x{eachItem.quantity})</span>
+                            <span className={styles.amount}>₦{(eachItem.price) * eachItem.quantity}</span>
                         </div>
 
                     )
@@ -49,12 +58,34 @@ export default function OrderDetail({ order }) {
                     <span>Total</span><span className={styles.amount}>₦{Intl.NumberFormat('en-US').format(Math.round(order.subtotal + order.delivery + order.vat))}</span>
                 </div>
 
-
-
+                {/* <br />
+                <div>
+                    <b>Delivery Address:</b>
+                    <hr />
+                    <span>{order.address}</span>
+                </div> */}
 
             </div>
 
-            <OrderStatus status={order.status} />
+            <div className={styles.orderInfo}>
+                <OrderStatus status={order.status} />
+                <div className={styles.orderInfoInner}>
+                    <h3>Delivery Address</h3>
+                    {/* <hr /> */}
+                    {/* <br /> */}
+                    <p>{order.address}</p>
+                </div >
+                <div className={styles.orderInfoInner}>
+                    <h3>Date and Time</h3>
+                    {/* <hr /> */}
+                    {/* <br /> */}
+                    <p>
+                        {/* {order.created_at} */}
+
+                    {new Date(order.created_at).toLocaleString('en-NG', options)}
+                    </p>
+                </div>
+            </div>
 
         </div>
     );

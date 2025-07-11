@@ -45,7 +45,7 @@ export default function ProductDetail({ sku, imageUrl, name, description, price,
                 <div className={styles.quantity}>
                     <button onClick={() => decreaseQuantity(sku)} disabled={quantity === 0}>−</button>
                     <span>{quantity}</span>
-                    <button onClick={() => quantity < count && increaseQuantity(sku)}>+</button>
+                    <button onClick={() => quantity < count && increaseQuantity({sku, name, price})}>+</button>
                     <Link href="/cart"><button className={styles.goTo}>VIEW CART</button></Link>
                 </div>
             </div>

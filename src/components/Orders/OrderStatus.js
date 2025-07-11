@@ -25,7 +25,7 @@ export default function OrderStatus({ status }) {
               {step.icon}
               <span 
               className={`${styles.orderCenter} ${isCurrent && index !== steps.length - 1 ? `${styles.pulse}` : ''}`}
-              ></span>
+              >{step.icon}</span>
             </div>
             <span
               className={`${styles.orderLabel} ${isActive ? `${styles.active}` : ''} ${isCurrent ? `${styles.current}` : ''}`}
@@ -38,6 +38,7 @@ export default function OrderStatus({ status }) {
           </div>
         );
       })}
+
     </div>
   );
 }

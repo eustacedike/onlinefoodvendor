@@ -34,7 +34,7 @@ export default function ProductCard({ sku, imageUrl, name, price, tag, discount,
                 <div className={styles.quantity}>
                     <button onClick={() => decreaseQuantity(sku)} disabled={quantity === 0}>−</button>
                     <span>{quantity}</span>
-                    <button onClick={() => quantity < count && increaseQuantity(sku)}>+</button>
+                    <button onClick={() => quantity < count && increaseQuantity({sku, name, price})}>+</button>
                 </div>
             </div>
         </div>

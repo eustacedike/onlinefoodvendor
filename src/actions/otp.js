@@ -39,7 +39,6 @@ export async function requestOtp(email) {
 
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SITE_URL}/api/requestotp`, {
-    // '/api/requestotp', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, otp })

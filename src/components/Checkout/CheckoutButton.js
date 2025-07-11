@@ -7,9 +7,19 @@ import { useRouter } from 'next/navigation';
 import style from './checkout.module.css'; // Assuming you have some styles
 // import { GrSend } from "react-icons/gr";
 // import { useAlert } from '@/context/AlertContext';
+import { useAuthUser } from '@/hooks/useAuthUser';
+import { useCartContext } from '@/context/CartContext';
 
-export default function CheckoutButton({ email, amount, fullname, phoneno, address, cords, verified, setError, subtotal }) {
+
+export default function CheckoutButton({ email, amount, fullname, phoneno, address, cords, verified, setError, delivery, vat, subtotal }) {
   const router = useRouter();
+    const { user, profile, loading } = useAuthUser();
+
+    const type = user ? 'user' : 'guest';
+
+      const { getCartItems } = useCartContext();
+      const items = getCartItems();
+
 
   //  const { showAlert } = useAlert();
   
@@ -90,13 +100,15 @@ export default function CheckoutButton({ email, amount, fullname, phoneno, addre
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ email, amount }),
+        body: JSON.stringify({ email, amount, type, items, address, delivery, vat, subtotal, phoneno }),
       });
 
       const result = await res.json();
 
 
       if (result?.status && result?.data?.authorization_url) {
+
+
         // Redirect user to Paystack checkout
         window.location.href = result.data.authorization_url;
       } else {

@@ -65,7 +65,7 @@ export const CartProvider = ({ children }) => {
 
   // console.log(cart);
 
-  const increaseQuantity = (sku) => {
+  const increaseQuantity = ({sku, name, price}) => {
     setCart(prev => {
       const found = prev.find(item => item.sku === sku);
       if (found) {
@@ -73,7 +73,7 @@ export const CartProvider = ({ children }) => {
           item.sku === sku ? { ...item, quantity: item.quantity + 1 } : item
         );
       } else {
-        return [...prev, { sku, quantity: 1 }];
+        return [...prev, { sku, name, quantity: 1, price }];
       }
     });
   };

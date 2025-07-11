@@ -2,6 +2,7 @@
 
 import styles from './ordersummary.module.css';
 import { useCartTotal } from '@/hooks/useCartTotal';
+// import { useCartContext } from '@/context/CartContext';
 
 import CheckoutButton from './CheckoutButton';
 import { useState, useEffect } from 'react';
@@ -16,6 +17,9 @@ export default function OrderSummary({formData}) {
     }
 
     const subtotal = useCartTotal();
+    //  const { getCartItems } = useCartContext();
+
+    // console.log(getCartItems());
 
     const vendorLocation = {
         lat: 6.558125, 
@@ -141,6 +145,8 @@ export default function OrderSummary({formData}) {
                 cords={formData.addressCords}
                 verified={formData.verified}
                 setError={setError}
+                delivery={delivery}
+                vat={vat}
             /> 
            {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
 

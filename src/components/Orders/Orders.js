@@ -33,11 +33,11 @@ export default function Orders({ orders }) {
                         </thead>
                         <tbody>
                             {orders.map((order) => (
-                                <tr key={order.id} onClick={() => rowLink(order.ref)}>
+                                <tr key={order.six_digit_id} onClick={() => rowLink(order.ref)}>
                               
 
-                                  <td>{order.id}</td>
-                                 <td>{order.date}</td>
+                                  <td>{order.six_digit_id}</td>
+                                 <td>{order.created_at}</td>
                                 <td>₦{Intl.NumberFormat('en-US').format(order.subtotal + order.delivery + order.vat)}</td>
                                  <td
                                         style={{
