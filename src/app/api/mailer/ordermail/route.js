@@ -3,7 +3,7 @@
 import nodemailer from 'nodemailer'
 
 export async function POST(req) {
-    const { email, ref, subtotal, address } = await req.json()
+    const { email, ref, subtotal } = await req.json()
 
     try {
         const transporter = nodemailer.createTransport({
@@ -90,7 +90,7 @@ export async function POST(req) {
       <p>Your order has been successfully received and is now being processed by our team at <strong>Aebis Unique Menu</strong>.</p>
 
       <div class="order-details">
-        <p><strong>Delivery Address:</strong> ${address}</p>
+        
         <p><strong>Total:</strong> ₦${subtotal}</p>
       </div>
 

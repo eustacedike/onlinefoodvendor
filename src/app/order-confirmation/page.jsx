@@ -4,49 +4,66 @@
 
 import React from 'react';
 import Link from 'next/link'; // Assuming you are in a Next.js environment
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import styles from './orderconfirmation.module.css'; // Import the CSS module
 import { FaHourglassHalf, FaHome, FaHistory } from 'react-icons/fa'; // Example icons
 import { BsPatchCheckFill,  BsFillPatchExclamationFill } from "react-icons/bs";
 // import { useRouter, useSearchParams } from 'next/navigation';
 // You might receive the orderId as a prop if available
-export default function PendingOrderConfirmation({ searchParams  }) {
+export default function PendingOrderConfirmation({  }) {
     
     
     // const searchParams = useSearchParams();
     const [paymentStatus, setPaymentStatus] = useState('pending'); // Example state for payment status
-    // const [reference, setReference] = useState('');
-const reference = searchParams.ref; // Get the reference from search params
+    // const searchParams = useSearchParams();
+    const [reference, setReference] = useState('');
+  
     // useEffect(() => {
     //   const ref = searchParams.get('reference');
     //   if (ref) setReference(ref);
     // }, [searchParams]);
 
+    
 
     useEffect(() => {
-        async function verify() {
-          const res = await fetch('/api/paystack/verify', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ reference })
-          });
-    
-          const result = await res.json();
-    
-          if (result.success) {
-      setPaymentStatus('confirmed');
-          } else {
-            console.error(result.error);
-            setPaymentStatus('failed');
+      const params = new URLSearchParams(window.location.search);
+      const q = params.get('reference');
+      setReference(q);
+    }, []);
 
+// const reference = "md0mts5j-lVNI3L6xixGlUBe6";
+    useEffect(() => {
+        if (!reference) return;
+      
+        async function verify() {
+          try {
+            const res = await fetch('/api/paystack/verify', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ reference }),
+            });
+      
+            const result = await res.json();
+      
+            if (result.status) {
+              setPaymentStatus('confirmed');
+            } else {
+              console.error(result.error);
+              setPaymentStatus('failed');
+            }
+          } catch (err) {
+            console.error('Verification error:', err);
+            setPaymentStatus('failed');
           }
         }
-    
-        if (reference) verify();
+      
+        verify();
       }, [reference]);
+      
 
     return (
-        paymentStatus === 'pending' ?
+        <Suspense fallback={<p>Loading...</p>}>
+       { paymentStatus === 'pending' ?
             (<div className={styles.container}>
                 <div className={styles.card}>
                     <h2 className={styles.title}>Order Received</h2>
@@ -54,7 +71,7 @@ const reference = searchParams.ref; // Get the reference from search params
 
                     <div className={styles.loader}>
                         <div className={styles.spinner}></div>
-                        <p>Please wait while we confirm your order...</p>
+                        <p>Please wait while we confirm your payment...</p>
                     </div>
 
                     <br />
@@ -132,6 +149,8 @@ const reference = searchParams.ref; // Get the reference from search params
                     </div>
                 </div>
                 </div>)
+}
+                </Suspense>
 
 
     );

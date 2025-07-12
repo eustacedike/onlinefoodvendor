@@ -46,9 +46,7 @@ export default function CheckoutButton({ email, amount, fullname, phoneno, addre
       }
 
       if (!verified) {
-        // alertBox("Failed!",'Please enter your full name','#ff0000','#ffffff');
         setError("Please verify your email address first");
-        // alert('Full name is required');
         return;
       }
 
