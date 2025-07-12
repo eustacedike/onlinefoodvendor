@@ -3,9 +3,21 @@ import { createClient } from '@/utils/supabase/server';
 
 export async function POST(req) {
    const supabase = await createClient();
+
+   function generateReference() {
+    const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let ref = '';
+    for (let i = 0; i < 16; i++) {
+      const randIndex = Math.floor(Math.random() * charset.length);
+      ref += charset[randIndex];
+    }
+    return `${Date.now().toString(36)}-${ref}`;
+  }
+
     try {
       const body = await req.json();
       const { email, amount, type, items, address, delivery, vat, subtotal, phoneno } = body;
+      const reference = generateReference();  
   
       const response = await fetch("https://api.paystack.co/transaction/initialize", {
         method: "POST",
@@ -16,7 +28,8 @@ export async function POST(req) {
         body: JSON.stringify({
           email,
           amount,
-          callback_url: '/orders/M9E7YT82WQLF46GH',
+          reference,
+          callback_url: `${process.env.NEXT_PUBLIC_SITE_URL}/order-confirmation?ref=${reference}`,
         }),
       });
   
@@ -45,18 +58,14 @@ export async function POST(req) {
         vat,
         subtotal,
         phone: phoneno
-        
-        // expires_at: expiresAt.toISOString(),
-        // verified: false,
-        // last_sent_at: cooldownEnd.toISOString()
       });
 
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_SITE_URL}/api/mailer/ordermail`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email,  ref: result.data.reference, subtotal, address })
-      });
+      // const res = await fetch(
+      //   `${process.env.NEXT_PUBLIC_SITE_URL}/api/mailer/ordermail`, {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify({ email,  ref: result.data.reference, subtotal, address })
+      // });
 
       return Response.json(result); // returns authorization_url, access_code, reference
     } catch (error) {

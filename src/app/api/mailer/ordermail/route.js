@@ -99,7 +99,7 @@ export async function POST(req) {
       <a style="color:white;" href="${process.env.NEXT_PUBLIC_SITE_URL}/orders/${ref}" class="button">View Your Order</a>
 
       <div class="footer">
-        <p>Need help? Just reply to this email or contact us at <a href="mailto:support@aebismenu.com">support@aebismenu.com</a>.</p>
+        <p>Need help? Just reply to this email or contact us at <a href="mailto:${process.env.EMAIL_USER}">${process.env.EMAIL_USER}</a>.</p>
         <p>Thanks for choosing Aebis Unique Menu!</p>
       </div>
     </div>
