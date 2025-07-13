@@ -40,6 +40,7 @@ export default function CheckoutUserDetails({ formData, setFormData }) {
     // const [email, setEmail] = useState('');
     // const [user, setUser] = useState(null);
     const [otp, setOtp] = useState('');
+    // const [otp, setOtp] = useState(Array(length).fill(''));
     const [step, setStep] = useState(false); // false = request, true = verify
     // const [verified, setVerified] = useState(false);
     const [message, setMessage] = useState('');
@@ -59,7 +60,8 @@ export default function CheckoutUserDetails({ formData, setFormData }) {
               fullname: profile.name || '',
               email: profile.email || '',
               phoneNo: profile.phone || '',
-              address: profile.addresses?.[0] || '',
+              address: profile.addresses[0]?.address || '',
+              addressCords: profile.addresses[0]?.addressCords || null,
               verified: true,
             }));
 
@@ -134,30 +136,66 @@ export default function CheckoutUserDetails({ formData, setFormData }) {
         }
     };
 
+    // useEffect(() => {
+    //     if (!window.google || !window.google.maps) return;
+
+    //     const autocomplete = new window.google.maps.places.Autocomplete(inputRef.current, {
+    //         componentRestrictions: { country: ['ng'] },
+    //         fields: ['formatted_address', 'geometry'],
+    //     });
+
+    //     autocomplete.addListener('place_changed', () => {
+    //         const place = autocomplete.getPlace();
+    //         if (!place.geometry) return;
+
+    //         const { lat, lng } = place.geometry.location;
+    //         setFormData(prev => ({
+    //             ...prev,
+    //             address: place.formatted_address,
+    //             addressCords: { lat: lat(), lng: lng() },
+    //         }));
+    //     });
+    // }, []);
+
     useEffect(() => {
         if (!window.google || !window.google.maps) return;
-
+      
         const autocomplete = new window.google.maps.places.Autocomplete(inputRef.current, {
-            componentRestrictions: { country: ['ng'] },
-            fields: ['formatted_address', 'geometry'],
+          componentRestrictions: { country: ['ng'] },
+          fields: ['formatted_address', 'geometry'],
         });
+      
+        // Bias suggestions to Lagos
+        const lagosBounds = new window.google.maps.LatLngBounds(
+          { lat: 6.393, lng: 3.276 },
+          { lat: 6.700, lng: 3.500 }
+        );
+        autocomplete.setBounds(lagosBounds);
+      
+        const handlePlaceChanged = () => {
+          const place = autocomplete.getPlace();
+          if (!place.geometry) return;
+      
+          const { lat, lng } = place.geometry.location;
+          setFormData(prev => ({
+            ...prev,
+            address: place.formatted_address,
+            addressCords: { lat: lat(), lng: lng() },
+          }));
+        };
+      
+        autocomplete.addListener('place_changed', handlePlaceChanged);
+      
+        return () => {
+          // Clean up the listener to avoid duplicates
+          window.google.maps.event.clearInstanceListeners(autocomplete);
+        };
+      }, []);
+      
 
-        autocomplete.addListener('place_changed', () => {
-            const place = autocomplete.getPlace();
-            if (!place.geometry) return;
-
-            const { lat, lng } = place.geometry.location;
-            setFormData(prev => ({
-                ...prev,
-                address: place.formatted_address,
-                addressCords: { lat: lat(), lng: lng() },
-            }));
-        });
-    }, []);
 
 
-
-
+// console.log(inputRef.current);
 
     return (
         // <div className={styles.checkoutContainer}
@@ -221,7 +259,7 @@ export default function CheckoutUserDetails({ formData, setFormData }) {
 
 
                 </div>
-
+        
                 {step &&
                     <div className={styles.inputGroup}>
                         <div>

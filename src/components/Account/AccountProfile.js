@@ -40,7 +40,16 @@ export default function AccountProfile() {
     const [phoneEdit, setPhoneEdit] = useState(false);
     const [phoneNo, setPhoneNo] = useState("");
     const [addressEdit, setAddressEdit] = useState(false);
-    const [newAddress, setNewAddress] = useState("");
+    const [newAddress, setNewAddress] = useState({
+        address: '',
+        addressCords: {
+            lat: 0,
+            lng: 0
+        }
+    });
+
+    const newAddressInputRef = useRef(null);
+
 
     const [refreshCount, setRefreshCount] = useState(0);
     // ✅ Call this after any of your actions to trigger a re-fetch
@@ -66,6 +75,7 @@ export default function AccountProfile() {
 
     // const router = useRouter();
 
+
     useEffect(() => {
         const supabase = createClient()
 
@@ -73,7 +83,7 @@ export default function AccountProfile() {
             const { data: userData, error: userError } = await supabase.auth.getUser()
 
             if (userError || !userData?.user) {
-                router.push('/login')
+                router.push('/auth/login')
                 return
             }
 
@@ -139,7 +149,78 @@ export default function AccountProfile() {
 
     //   console.log(profile)
 
+    const handleCheckbox = async (e) => {
+        const checked = e.target.checked;
+        if (!checked) {
+            setNewAddress(prev => ({ ...prev, address: '', addressCords: null }));
+            newAddressInputRef.current.disabled = false;
+            return;
+        }
 
+        if ('geolocation' in navigator) {
+            navigator.geolocation.getCurrentPosition(async ({ coords }) => {
+                const { latitude, longitude } = coords;
+                const res = await fetch('/api/geocode', {
+                    method: 'POST',
+                    body: JSON.stringify({ lat: latitude, lng: longitude }),
+                });
+
+                const result = await res.json();
+                if (result.success) {
+                    setNewAddress(prev => ({
+                        ...prev,
+                        address: result.address,
+                        addressCords: { lat: latitude, lng: longitude },
+                    }));
+                    newAddressInputRef.current.disabled = true;
+                } else {
+                    alert('Failed to get location');
+                    e.target.checked = false;
+                }
+            });
+        } else {
+            alert('Geolocation not supported');
+            e.target.checked = false;
+        }
+    };
+
+
+    useEffect(() => {
+        if (!window.google || !window.google.maps  || !newAddressInputRef.current) return;
+
+        const autocomplete = new window.google.maps.places.Autocomplete(newAddressInputRef.current, {
+            componentRestrictions: { country: ['ng'] },
+            fields: ['formatted_address', 'geometry'],
+        });
+
+        // Bias suggestions to Lagos
+        const lagosBounds = new window.google.maps.LatLngBounds(
+            { lat: 6.393, lng: 3.276 },
+            { lat: 6.700, lng: 3.500 }
+        );
+        autocomplete.setBounds(lagosBounds);
+
+        const handlePlaceChanged = () => {
+            const place = autocomplete.getPlace();
+            if (!place.geometry) return;
+
+            const { lat, lng } = place.geometry.location;
+            setNewAddress(prev => ({
+                ...prev,
+                address: place.formatted_address,
+                addressCords: { lat: lat(), lng: lng() },
+            }));
+        };
+
+        autocomplete.addListener('place_changed', handlePlaceChanged);
+
+        return () => {
+            // Clean up the listener to avoid duplicates
+            window.google.maps.event.clearInstanceListeners(autocomplete);
+        };
+    }, [addressEdit]);
+
+    // console.log(newAddressInputRef.current)
     return (
 
 
@@ -271,22 +352,27 @@ export default function AccountProfile() {
 
                                 <div className={styles.detail}>
                                     <input
-                                        value={newAddress}
+                                        value={newAddress.address}
                                         // disabled={!phoneEdit}
                                         style={{ border: "2px solid var(--primary-color)" }}
-                                        onChange={(e) => setNewAddress(e.target.value)}
+                                        onChange={(e) => setNewAddress({ ...newAddress, address: e.target.value })}
+                                        ref={newAddressInputRef}
                                     />
                                     <button
-                                        className={styles.editBtn} style={{ backgroundColor: "limegreen", color: "white"  }}
-                                        onClick={() => { addAddress(newAddress, user.id); setAddressEdit(false) }}
+                                        className={styles.editBtn} style={{ backgroundColor: "limegreen", color: "white" }}
+                                        onClick={async () => {
+                                            await addAddress(newAddress, user.id);
+                                            setAddressEdit(false);
+                                            triggerRefetch(); // only after addAddress completes
+                                        }}
                                     >Save</button>
                                 </div>
 
                                 <label style={{ marginBottom: "20px" }}>
                                     <input
                                         type='checkbox'
-                                    // checked={useCurrentLocation}
-                                    // onChange={handleCheckbox}
+                                        // checked={useCurrentLocation}
+                                        onChange={handleCheckbox}
                                     />{' '}
                                     Use Current Location
                                 </label>
@@ -298,7 +384,7 @@ export default function AccountProfile() {
 
                         {user?.addresses.map((address, index) => (
                             <div className={styles.detail} key={index}>
-                                <p>{address.place}</p>
+                                <p>{address.address}</p>
                                 {index === 0 ?
                                     <span style={{ color: "limegreen", cursor: "pointer" }}> <IoIosCheckmarkCircle /></span> :
                                     <span
@@ -306,9 +392,16 @@ export default function AccountProfile() {
                                         onClick={() => { setPreferredAddress(index, user.id); triggerRefetch() }}
                                     > <IoIosCheckmarkCircleOutline /></span>}
                                 <button
-                                    className={styles.deleteBtn}
-                                    onClick={() => { deleteAddress(index, user.id); triggerRefetch() }}
-                                ><MdDeleteForever /></button>
+                                    className={styles.editBtn}
+                                    onClick=
+                                    {async () => {
+                                        await deleteAddress(index, user.id);
+                                        triggerRefetch(); // ensure it's post-completion
+                                    }}
+                                >
+                                    {/* <MdDeleteForever /> */}
+                                    Remove
+                                    </button>
                             </div>
                         ))}
 
@@ -317,7 +410,7 @@ export default function AccountProfile() {
 
                     </div>
 
-
+                    <small style={{color: "grey"}}><span style={{color: "red"}}>*</span>You can select preferred address by clicking the checkbox in front of the address</small>
 
                 </div>
             </div>

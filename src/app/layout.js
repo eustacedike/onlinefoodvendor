@@ -50,7 +50,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${electrolize.variable} ${playfairDisplay.variable} ${dancingScript.variable}`}>
       <head>
-        {/* Add the Script here */}
         <Script
           src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places`}
           strategy="beforeInteractive"
