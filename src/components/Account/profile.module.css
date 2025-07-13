@@ -220,6 +220,24 @@ padding: 30px 2vw;
   /* display: block; */
 }
 
+.details hr {
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
+  border: none;
+  margin: 0px auto;
+}
+
+.detail p {
+  /* font-family: var(--primary-font); */
+  font-size: var(--card-p-font);
+  padding: 8px 0px;
+  /* border: 2px solid var(--secondary-color); */
+  /* border-radius: 4px; */
+  margin: 5px 0;
+  width: 70%;
+}
+
 .detail input {
   font-family: var(--primary-font);
   padding: 8px 8px;
@@ -231,14 +249,16 @@ padding: 30px 2vw;
 
 .editBtn {
   font-family: var(--primary-font);
-  padding: 9px 12px;
-  color: white;
-  background-color: var(--primary-color);
+  padding: 9px 0px;
+  color: var(--primary-color);
+  /* background-color: var(--primary-color); */
+  background: none;
   border: none;
   font-weight: 800;
   border-radius: 4px;
   cursor: pointer;
   width: 25%;
+  /* text-align: right; */
 }
 
 .addBtn {

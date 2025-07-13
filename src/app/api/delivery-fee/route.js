@@ -54,7 +54,7 @@ export async function POST(req) {
             });
         }
 
-        return new Response(JSON.stringify({ error: "Please enter address or use the checkbox to automatically get location" }), {
+        return new Response(JSON.stringify({ error: "Enter address to estimate delivery fee" }), {
           status: 500,
         });
       }

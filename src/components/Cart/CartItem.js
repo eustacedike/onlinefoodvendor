@@ -83,7 +83,7 @@ export default function CartItem({ product }) {
      const { increaseQuantity, decreaseQuantity, getQuantity } = useCartContext();
             const quantity = getQuantity(product.sku);
 
-
+            const { sku, name, price } = product;
 
     return (
         <div key={product.id} className={styles.cartItem}>
@@ -102,7 +102,7 @@ export default function CartItem({ product }) {
                 <div className={styles.quantity}>
                     <button onClick={() => decreaseQuantity(product.sku)} disabled={quantity === 0}>−</button>
                     <span>{quantity}</span>
-                    <button onClick={() => quantity < product.count && increaseQuantity(product.sku)}>+</button>
+                    <button onClick={() => quantity < product.count && increaseQuantity({sku, name, price})}>+</button>
                 </div>
                 <div className={styles.total}>
                     {product.discount && <span className={styles.discount}>{`%${product.discount} Off`}</span>}

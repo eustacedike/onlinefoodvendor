@@ -4,7 +4,8 @@ import Image from "next/image";
 import styles from "./profile.module.css";
 import { useState, useEffect, useRef } from "react";
 import { createClient } from '@/utils/supabase/client'; // must use client here
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
+// import { useSearchParams } from "next/navigation";
 
 import Orders from "../Orders/Orders";
 import { useOrderContext } from "@/context/OrderContext";
@@ -45,9 +46,25 @@ export default function AccountProfile() {
     // ✅ Call this after any of your actions to trigger a re-fetch
     const triggerRefetch = () => setRefreshCount((prev) => prev + 1);
 
+    // const searchParams = useSearchParams();
+    const router = useRouter()
 
+    useEffect(() => {
+        // const reload = searchParams.get('reload')
+        const params = new URLSearchParams(window.location.search);
+        const reload = params.get('reload');
+        if (reload === 'true') {
+            // First clean the URL
+            const url = new URL(window.location.href)
+            url.searchParams.delete('reload')
+            window.history.replaceState({}, '', url.toString())
 
-    const router = useRouter();
+            // Then reload once
+            window.location.reload()
+        }
+    }, [router])
+
+    // const router = useRouter();
 
     useEffect(() => {
         const supabase = createClient()
@@ -180,7 +197,8 @@ export default function AccountProfile() {
                     <div className={styles.details}>
 
                         <h4>Phone</h4>
-                        <div className={styles.detail}>
+                        <hr />
+                        {/* <div className={styles.detail}>
                             <input
                                 value={phoneNo}
                                 disabled={!phoneEdit}
@@ -196,20 +214,43 @@ export default function AccountProfile() {
                                 <button className={styles.editBtn} onClick={() => setPhoneEdit(true)}>Edit</button>
                             }
 
-                        </div>
+                        </div> */}
+                        {phoneEdit ?
+                            (<div className={styles.detail}>
+                                <input
+                                    value={phoneNo}
+                                    style={{ border: "2px solid var(--primary-color)" }}
+                                    onChange={(e) => setPhoneNo(e.target.value)}
+                                />
+
+                                <button
+                                    className={styles.editBtn} style={{ backgroundColor: "limegreen", color: "white" }}
+                                    onClick={() => { updatePhone(phoneNo, user.id); setPhoneEdit(false) }}
+                                >Save</button>
+                            </div>)
+                            :
+                            (<div className={styles.detail}>
+                                <p>{phoneNo}</p>
+                                <button className={styles.editBtn} onClick={() => setPhoneEdit(true)}>Edit</button>
+
+                            </div>)
+                        }
 
                         <br />
 
                         <h4>Email Address</h4>
+                        <hr />
                         <div className={styles.detail}>
-                            <input
+
+                            {/* <input
                                 value={user?.email || ''}
                                 disabled
-                            />
-                            {
+                            /> */}
+                            <p>{user?.email || ''}</p>
+                            {/* {
                                 user?.verified ? <button style={{ backgroundColor: "limegreen" }} className={styles.editBtn}>Verified </button> :
                                     <button className={styles.editBtn}>Verify</button>
-                            }
+                            } */}
 
                         </div>
 
@@ -219,10 +260,10 @@ export default function AccountProfile() {
                         <div className={styles.detail}>
                             <h4>Delivery Addresses</h4>
                             <button
-                                className={styles.addBtn}
+                                className={styles.editBtn}
                                 style={{ display: user?.addresses.length >= 3 ? "none" : null }}
                                 onClick={() => setAddressEdit(true)}
-                            >Add</button>
+                            >Add New..</button>
                         </div>
                         <hr />
                         {addressEdit ?
@@ -236,12 +277,12 @@ export default function AccountProfile() {
                                         onChange={(e) => setNewAddress(e.target.value)}
                                     />
                                     <button
-                                        className={styles.editBtn} style={{ backgroundColor: "limegreen" }}
+                                        className={styles.editBtn} style={{ backgroundColor: "limegreen", color: "white"  }}
                                         onClick={() => { addAddress(newAddress, user.id); setAddressEdit(false) }}
                                     >Save</button>
                                 </div>
 
-                                <label style={{marginBottom: "20px"}}> 
+                                <label style={{ marginBottom: "20px" }}>
                                     <input
                                         type='checkbox'
                                     // checked={useCurrentLocation}
@@ -282,7 +323,7 @@ export default function AccountProfile() {
             </div>
 
             <div className={styles.history}>
-                <Orders orders={orders} />
+                <Orders orders={orders.filter(order => order.owner === user?.email)} />
             </div>
         </div>
 

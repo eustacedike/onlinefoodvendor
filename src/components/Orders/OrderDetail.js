@@ -21,7 +21,7 @@ export default function OrderDetail({ order }) {
         second: 'numeric',
         timeZoneName: 'shortOffset', // or 'longOffset' or 'short' or 'long'
         // timeZone: 'Africa/Lagos' // Explicitly set timezone for consistency, though default is often user's local
-      };
+    };
 
 
     return (
@@ -80,9 +80,23 @@ export default function OrderDetail({ order }) {
                     {/* <hr /> */}
                     {/* <br /> */}
                     <p>
-                        {/* {order.created_at} */}
+                        <strong>   {new Date(order.created_at).toLocaleDateString('en-US', {
+                            weekday: 'long',
+                            month: 'long',
+                            day: 'numeric',
+                            year: 'numeric',
+                        })
+                        }
+                        </strong> at <strong>
+                            {new Date(order.created_at).toLocaleTimeString('en-US', {
+                                hour: 'numeric',
+                                minute: '2-digit',
+                                hour12: true,
+                            })
+                            }
+                        </strong>
 
-                    {new Date(order.created_at).toLocaleString('en-NG', options)}
+                        {/* {new Date(order.created_at).toLocaleString('en-NG', options)} */}
                     </p>
                 </div>
             </div>

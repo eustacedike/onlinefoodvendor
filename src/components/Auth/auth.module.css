@@ -41,7 +41,7 @@
     display: flex;
     gap: 15px;
     /* border: 1px solid green; */
-
+position: relative;
     /* padding: 0px 6vw; */
 }
 
@@ -66,6 +66,21 @@
     margin-bottom: 12px;
     font-family: var(--primary-font);
   }
+
+  .passwordToggle{
+          position: absolute;
+          top: 44%;
+          right: 5px;
+          /* transform: translateY(-50%); */
+          cursor: pointer;
+          color: var(--primary-color);
+          max-width: 10%;
+          /* display: flex; */
+          /* justify-content: center; */
+          /* align-items: center; */
+          /* border: 1px solid red; */
+          font-size: 20px;
+        }
   
   .loginButton {
     background-color: var(--primary-color);

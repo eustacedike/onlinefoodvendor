@@ -12,6 +12,18 @@ export async function POST(req) {
       return Response.json({ error: 'Missing reference' }, { status: 400 });
     }
 
+    // Get the order first to check if mail has already been sent
+    const { data: order, error: fetchError } = await supabase
+      .from('orders')
+      .select('verified')
+      .eq('ref', reference)
+      .single();
+
+    if (fetchError || !order) {
+      console.error('Order fetch error:', fetchError);
+      return Response.json({ error: 'Order not found' }, { status: 404 });
+    }
+
     const response = await fetch(`https://api.paystack.co/transaction/verify/${reference}`, {
       method: 'GET',
       headers: {
@@ -31,17 +43,20 @@ export async function POST(req) {
     await supabase
       .from('orders')
       .update({ verified: true })
-      .eq('reference', reference);
+      .eq('ref', reference);
 
       const email = result.data.customer.email;
       const subtotal = result.data.amount / 100; // Convert to Naira
 
     // Send email confirmation
+    if (!order.verified) {
+      
     await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/mailer/ordermail`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, ref: reference, subtotal }),
     });
+}
     console.log('Paystack verification result:', result);
     return Response.json(result);
    

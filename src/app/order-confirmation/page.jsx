@@ -8,20 +8,24 @@ import { useState, useEffect, Suspense } from 'react';
 import styles from './orderconfirmation.module.css'; // Import the CSS module
 import { FaHourglassHalf, FaHome, FaHistory } from 'react-icons/fa'; // Example icons
 import { BsPatchCheckFill,  BsFillPatchExclamationFill } from "react-icons/bs";
+
+// import { useOrderContext } from '@/context/OrderContext'; 
 // import { useRouter, useSearchParams } from 'next/navigation';
 // You might receive the orderId as a prop if available
 export default function PendingOrderConfirmation({  }) {
     
     
     // const searchParams = useSearchParams();
-    const [paymentStatus, setPaymentStatus] = useState('pending'); // Example state for payment status
+    const [paymentStatus, setPaymentStatus] = useState('pending');
+    const [paidAmount, setPaidAmount] = useState(null);
     // const searchParams = useSearchParams();
     const [reference, setReference] = useState('');
   
-    // useEffect(() => {
-    //   const ref = searchParams.get('reference');
-    //   if (ref) setReference(ref);
-    // }, [searchParams]);
+    //  const { orders } = useOrderContext();
+     // const { products, productGroups } = useProductContext();
+//    console.log(orders);
+     // Ensure comparison is valid (string === string)
+    //  const order = orders.find(o => o.ref === reference);
 
     
 
@@ -47,6 +51,7 @@ export default function PendingOrderConfirmation({  }) {
       
             if (result.status) {
               setPaymentStatus('confirmed');
+              setPaidAmount(result.data.amount / 100); // Convert to Naira
             } else {
               console.error(result.error);
               setPaymentStatus('failed');
@@ -62,8 +67,8 @@ export default function PendingOrderConfirmation({  }) {
       
 
     return (
-        <Suspense fallback={<p>Loading...</p>}>
-       { paymentStatus === 'pending' ?
+        // <Suspense fallback={<p>Loading...</p>}>{ 
+        paymentStatus === 'pending' ?
             (<div className={styles.container}>
                 <div className={styles.card}>
                     <h2 className={styles.title}>Order Received</h2>
@@ -112,13 +117,13 @@ export default function PendingOrderConfirmation({  }) {
                             Your order has been confirmed! Thank you for your patience.
                         </p>
                         <p className={styles.message}>
-                            <strong>Order ID:</strong> 003456
+                            <strong>Paid:</strong> {paidAmount ? `₦${Intl.NumberFormat('en-US').format(paidAmount)}` : null}
                         </p>
                         <p className={styles.instruction}>
                             Please check your email for confirmation details and tracking information.
                         </p>
                         <div className={styles.actions}>
-                            <Link href="/order" className={styles.button}>
+                            <Link href={`/orders/${reference}`} className={styles.button}>
                                 {/* <FaHome className={styles.buttonIcon} />  */}
                                 View Order
                             </Link>
@@ -149,8 +154,7 @@ export default function PendingOrderConfirmation({  }) {
                     </div>
                 </div>
                 </div>)
-}
-                </Suspense>
+// }                </Suspense>
 
 
     );

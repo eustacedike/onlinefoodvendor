@@ -91,10 +91,10 @@ export async function POST(req) {
 
       <div class="order-details">
         
-        <p><strong>Total:</strong> ₦${subtotal}</p>
+        <p><strong>Amount Paid:</strong> ₦${subtotal}</p>
       </div>
 
-      <p>You will receive another update once your order is on the way.</p>
+      <p>You will receive another update once your order is delivered.</p>
 
       <a style="color:white;" href="${process.env.NEXT_PUBLIC_SITE_URL}/orders/${ref}" class="button">View Your Order</a>
 

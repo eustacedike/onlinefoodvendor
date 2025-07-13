@@ -189,7 +189,7 @@
 
 
     .details {
-      background: var(--secondary-color);
+      /* background: var(--secondary-color); */
       color: white;
     }
 

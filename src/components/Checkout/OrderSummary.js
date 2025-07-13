@@ -31,6 +31,7 @@ export default function OrderSummary({formData}) {
     const [delivery, setDelivery] = useState(0);
     const [loadingFee, setLoadingFee] = useState(false);
     const [error, setError] = useState(null);
+    // const [paymentLoading, setPaymentLoading] = useState(false);
 
     // function getDistanceInKm(coord1, coord2) {
     //     const R = 6371; // Earth radius in km

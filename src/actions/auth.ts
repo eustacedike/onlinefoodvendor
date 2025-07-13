@@ -35,8 +35,8 @@ export async function login(_prevState: any, formData: FormData) {
 
   // console.log(data)
   revalidatePath('/profile')
-  revalidatePath('/cart', 'layout')  
-  redirect('/profile')
+  // revalidatePath('/cart', 'layout')  
+  redirect('/profile?reload=true')
   // location.reload();
 }
 
@@ -99,7 +99,7 @@ export async function logout() {
   } else {
     // window.location.href = '/'
     revalidatePath('/cart', 'layout') 
-    redirect('/') // or replace with router.push() if in a client component
+    redirect('/?reload=true') // or replace with router.push() if in a client component
   }
 }
 

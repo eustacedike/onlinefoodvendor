@@ -13,6 +13,7 @@ import { useProductContext } from '@/context/ProductContext';
 import DataFetch from "@/context/datafetch";
 import { createClient } from "@/utils/supabase/client";
 import { useComponents } from "@/hooks/useComponents";
+import { useRouter, useSearchParams } from "next/navigation";
 
 
 import Advert from "@/components/Advert/Advert";
@@ -27,6 +28,25 @@ import logo from "@/public/images/logo.png";
 
 
 export default function Home() {
+
+  //  const searchParams = useSearchParams();
+      // const router = useRouter()
+    
+      useEffect(() => {
+        // const reload = searchParams.get('reload')
+        const params = new URLSearchParams(window.location.search);
+      const reload = params.get('reload');
+
+        if (reload === 'true') {
+         // First clean the URL
+        const url = new URL(window.location.href)
+        url.searchParams.delete('reload')
+        window.history.replaceState({}, '', url.toString())
+  
+        // Then reload once
+        window.location.reload()
+        }
+      }, [])
 
   const { products, productGroups } = useProductContext();
   const [active, setActive] = useState(1);
