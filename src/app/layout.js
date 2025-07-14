@@ -1,7 +1,10 @@
+
+
 import { Geist, Geist_Mono, Dancing_Script, Inter, Playfair_Display, Electrolize } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 // import 'leaflet/dist/leaflet.css';
+import { headers } from "next/headers";
 
 import Navbar from "@/components/Layout/Navbar";
 import Footer from "@/components/Layout/Footer";
@@ -47,6 +50,26 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
+  const headersList = headers()
+  const pathname = headersList.get('x-pathname')
+
+
+  // Pages that need completely different root layout
+  const alternativeLayoutPages = ['/admin/dashboard'];
+
+  // console.log("RootLayout pathname:", !alternativeLayoutPages.includes(pathname));
+
+  // if (alternativeLayoutPages.includes(pathname)) {
+  //   return (
+  //     <html>
+  //       <body>
+  //         {children}
+  //       </body>
+  //     </html>
+  //   )
+  // }
+
   return (
     <html lang="en" className={`${electrolize.variable} ${playfairDisplay.variable} ${dancingScript.variable}`}>
       <head>
@@ -55,16 +78,20 @@ export default function RootLayout({ children }) {
           strategy="beforeInteractive"
         />
       </head>
-      <body>
+      <body
+      style={{ padding: alternativeLayoutPages.includes(pathname) ? '0' : null }}
+      className={`${electrolize.variable} ${playfairDisplay.variable} ${dancingScript.variable}`}>
         <AlertProvider>
           <OrderProvider>
             <ProductProvider>
               <CartProvider>
-
-                <Navbar />
+                {(!alternativeLayoutPages.includes(pathname)) && <Navbar />}
+                {/* <Navbar /> */}
                 {children}
-                <Footer />
-                
+                {(!alternativeLayoutPages.includes(pathname)) && <Footer />}
+
+                {/* <Footer /> */}
+
               </CartProvider>
             </ProductProvider>
           </OrderProvider>

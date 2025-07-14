@@ -12,8 +12,12 @@ export default function AdminPage() {
 
     return (
         <div>
-                <h2 className="title">ADMIN <hr /></h2>
             <Admin />
         </div>
     );
 }
+
+
+Admin.getLayout = function getLayout(page) {
+    return page
+  }
