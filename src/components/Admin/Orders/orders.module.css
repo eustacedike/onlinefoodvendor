@@ -1,0 +1,201 @@
+
+
+.ordersContainer {
+    width: 100%;
+    height: 100%;
+    /* border: 2px solid red; */
+
+    overflow: auto;
+    padding: 0px 6%;
+
+}
+
+.filter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-family: var(--primary-font);
+    /* border: 2px solid red; */
+}
+
+.statusFilter {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: var(--card-p-font);
+    justify-content: space-between;
+}
+
+.dateFilter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--card-p-font);
+  /* justify-content: flex-start; */
+  /* border: 1px solid red; */
+}
+
+.dateFilter label {
+  color: var(--secondary-color);
+  font-size: 1.7em;
+  font-weight: 800;
+  /* padding: 2px 8px; */
+  /* font-family: var(--primary-font); */
+}
+
+.dateFilter input {
+  background: white;
+  color: #2196f3;
+  padding: 2px 8px;
+  border: 2px solid #2196f3;
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: var(--primary-font);
+}
+
+.filterBtn {
+  background: white;
+  color: #2196f3;
+  padding: 3px 8px;
+  border: 2px solid #2196f3;
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: var(--primary-font);
+  text-wrap: nowrap;
+}
+.showAllBtn {
+  background: var(--secondary-color);
+  color: white;
+  padding: 3px 8px;
+  border: 2px solid var(--secondary-color);
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: var(--primary-font);
+  text-wrap: nowrap;
+}
+.filterBtnActive {
+  background: #2196f3;
+  color: white;
+}
+
+/* General table styling */
+.orderTable {
+  width: 100%;
+      border-collapse: collapse; 
+    margin: 0 auto; 
+    font-size: var(--card-h-font); 
+    font-family: var(--primary-font);
+    min-width: 400px; /* Ensure a minimum width */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); /* Add a subtle shadow */
+    height: 100%;
+    /* border: 2px solid blue; */
+    /* overflow: hidden; */
+
+    /* display: block; */
+    /* overflow: scroll; */
+    /* overflow-y: scroll; */
+
+  }
+
+  .orderTable thead {
+    position: sticky;
+    top: 0;
+    /* display: block; */
+    /* width: 100%; */
+  }
+  
+  /* Table header (thead) styling */
+  .orderTable thead tr {
+    background-color: var(--secondary-color); /* Header background color */
+    color: #ffffff; /* Header text color */
+    text-align: center; /* Align header text to the left */
+  }
+
+  .orderTable tbody {
+    height: 100%;
+    /* width: 100%; */
+
+    /* display: block; */
+  }
+  
+  /* Table header cells (th) and data cells (td) styling */
+  .orderTable th,
+  .orderTable td {
+    padding: 10px 15px; 
+    border: 1px solid #dddddd; 
+    text-wrap: nowrap;
+    /* min-width: max-content; */
+  }
+  
+  /* Table body (tbody) styling */
+  .orderTable tbody tr {
+    border-bottom: 1px solid #dddddd; /* Bottom border for rows */
+    text-align: center; /* Align header text to the left */
+    width: 100%;
+    background-color: white;
+    /* border: 2px solid green; */
+  
+}
+  
+  /* Last row in tbody */
+  .orderTable tbody tr:last-of-type {
+    border-bottom: 2px solid var(--secondary-color); /* Stronger bottom border for the last row */
+  }
+
+  .orderTable tbody tr:nth-of-type(odd) {
+    background-color: #f3f3f3; /* Lighter background for odd rows */
+  }
+
+  .orderTable tbody tr:hover {
+    background-color: #e0f2f1; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease;
+  }
+
+  .statusSelect {
+    background: white;
+    color: var(--secondary-color);
+    padding: 2px 8px;
+    border: 2px solid #2196f3;
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: var(--primary-font);
+    font-size: var(--card-p-font);
+  }
+ 
+  
+
+
+  
+  .viewBtn {
+    /* margin-top: 0.5rem; */
+    background: #2196f3;
+    color: white;
+    padding: 3px 8px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: var(--primary-font);
+
+  }
+  
+
+  
+
+
+
+
+
+@media (max-width: 780px) {
+ 
+  .filter {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+
+
+
+}

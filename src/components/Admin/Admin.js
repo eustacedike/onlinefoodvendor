@@ -14,11 +14,14 @@ import { GiBoxUnpacking } from "react-icons/gi";
 import { HiInformationCircle } from "react-icons/hi";
 import { LuMonitorCog } from "react-icons/lu";
 import { SlSocialPintarest } from "react-icons/sl";
+import { FaCogs } from "react-icons/fa";
 
 // content
-import Orders from "@/components/Orders/Orders";
+import AdminOrders from "./Orders/Orders";
 import { useOrderContext } from '@/context/OrderContext';
 import DataFetch from "@/context/datafetch";
+
+import AdminDashboard from "./Dashboard/Dashboard";
 
 
 export default function Admin() {
@@ -27,12 +30,13 @@ export default function Admin() {
 
 
     const sideBarItems = [
-        { name: "Dashboard", icon: <AiOutlineDashboard />, content: "Dashboard Content" },
-        { name: "Orders", icon: <FaCartArrowDown />, content: <Orders orders={orders}/> },
+        { name: "Dashboard", icon: <AiOutlineDashboard />, content: <AdminDashboard/> },
+        { name: "Orders", icon: <FaCartArrowDown />, content: <AdminOrders orders={orders}/> },
         { name: "Products", icon: <GiBoxUnpacking />, content: "Products Content" },
         { name: "Details", icon: <HiInformationCircle />, content: "Details Content" },
         { name: "Elements", icon: <LuMonitorCog />, content: "Elements Content" },
         { name: "Socials", icon: <SlSocialPintarest />, content: "Social Content" },
+        { name: "Configurations", icon: <FaCogs />, content: "Config" },
 
     ]
 
@@ -45,8 +49,8 @@ export default function Admin() {
                 <Image
                     src={logo}
                     alt="Logo"
-                    width={15}
-                    height={15}
+                    width={25}
+                    height={25}
                     priority
                 />
                 <h2 >Aebis Unique Menu</h2>

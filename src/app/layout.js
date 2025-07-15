@@ -49,9 +49,9 @@ export const metadata = {
   description: "Order your meal today",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
 
-  const headersList = headers()
+  const headersList = await headers()
   const pathname = headersList.get('x-pathname')
 
 
