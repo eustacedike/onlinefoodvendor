@@ -67,8 +67,8 @@ border: 1px solid lightgray;
   width: 146px;
   height: 146px;
   position: absolute;
-  top: -25%;
-  left: 32px;
+  top: -75px;
+  left: 30px;
   cursor: pointer;
   transition: 500ms;
 

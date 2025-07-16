@@ -80,7 +80,7 @@ export default function OrderDetail({ order }) {
                     {/* <hr /> */}
                     {/* <br /> */}
                     <p>
-                        <strong>   {new Date(order.created_at).toLocaleDateString('en-US', {
+                        <strong>   {new Date(order.created_at).toLocaleDateString('en-NG', {
                             weekday: 'long',
                             month: 'long',
                             day: 'numeric',
@@ -88,11 +88,12 @@ export default function OrderDetail({ order }) {
                         })
                         }
                         </strong> at <strong>
-                            {new Date(order.created_at).toLocaleTimeString('en-US', {
-                                hour: 'numeric',
-                                minute: '2-digit',
-                                hour12: true,
-                            })
+                            {new Date(new Date(order.created_at).getTime() + 60 * 60 * 1000).toLocaleString('en-NG', {
+    hour: 'numeric',
+    minute: '2-digit',
+    hour12: true,
+    timeZone: 'Africa/Lagos',
+})
                             }
                         </strong>
 

@@ -209,8 +209,8 @@ export default function AdminDashboard({
             alt={product.name}
             // fill
             objectFit="contain"
-            width={25}
-            height={25} />
+            width={35}
+            height={35} />
               {product.name}</strong> <span>x{product.orders} orders</span>
             </li>
           ))}

@@ -116,7 +116,7 @@ export default function AdminOrders({ orders }) {
             </div>
 
             {filteredOrders.length === 0 ? (
-                <Blank content="No Orders Yet" imgSrc={null} />
+                <Blank content="Nothing to show here" imgSrc={null} />
             ) : (
                 <table className={styles.orderTable}>
                     <thead>

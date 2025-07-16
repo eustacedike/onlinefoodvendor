@@ -90,7 +90,8 @@
     text-transform: uppercase;
     /* background-color: var(--secondary-color); */
     /* background: linear-gradient(90deg, #667eea, #764ba2); */
-    background: linear-gradient(90deg, #764ba2, #3f3d56);
+    /* background: linear-gradient(90deg, #764ba2, #3f3d56); */
+    background: linear-gradient(90deg, #3f3d56, #fd831e);
     padding: 5px;
     color: white;
     text-align: center;
@@ -102,7 +103,9 @@
     /* background-color: var(--primary-color); */
     /* background-color: var(--secondary-color); */
     /* background: linear-gradient(90deg, #667eea, #764ba2); */
-    background: linear-gradient(90deg, #764ba2, #3f3d56);
+    /* background: linear-gradient(90deg, #764ba2, #3f3d56); */
+    background: linear-gradient(90deg, #3f3d56, #fd831e);
+
 
 
     padding: 5px;

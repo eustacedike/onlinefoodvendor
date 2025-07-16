@@ -21,18 +21,22 @@ import AdminOrders from "./Orders/Orders";
 import { useOrderContext } from '@/context/OrderContext';
 import DataFetch from "@/context/datafetch";
 
+import AdminProducts from "./Products/Products";
+import { useProductContext } from "@/context/ProductContext";
+
 import AdminDashboard from "./Dashboard/Dashboard";
 
 
 export default function Admin() {
 
     const { orders } = useOrderContext();
+    const { products } = useProductContext();
 
 
     const sideBarItems = [
         { name: "Dashboard", icon: <AiOutlineDashboard />, content: <AdminDashboard/> },
         { name: "Orders", icon: <FaCartArrowDown />, content: <AdminOrders orders={orders}/> },
-        { name: "Products", icon: <GiBoxUnpacking />, content: "Products Content" },
+        { name: "Products", icon: <GiBoxUnpacking />, content: <AdminProducts products={products}/> },
         { name: "Details", icon: <HiInformationCircle />, content: "Details Content" },
         { name: "Elements", icon: <LuMonitorCog />, content: "Elements Content" },
         { name: "Socials", icon: <SlSocialPintarest />, content: "Social Content" },
@@ -40,7 +44,7 @@ export default function Admin() {
 
     ]
 
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(2);
 
     return (
         <div className={styles.AdminMain}>
