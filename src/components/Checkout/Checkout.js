@@ -28,10 +28,7 @@ export default function Checkout() {
             lat: 0, 
             lng: 0
           }
-        // addressCords: {
-        //     lat: 6.425469, 
-        //     lng: 3.611590
-        //   }
+     
       });
 
     // const [useCurrentLocation, setUseCurrentLocation] = useState(false);

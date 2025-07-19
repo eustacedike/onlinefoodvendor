@@ -5,6 +5,45 @@
     /* overflow: hidden; */
 }
 
+.productsMain {
+    position: relative;
+}
+
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 100%;
+    width: 100%;
+    z-index: 20;
+    background-color: rgb(255, 255, 255, 0.9);
+    /* background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); */
+
+}
+
+.switches {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: sticky;
+left: 10px;
+}
+
+.nav button {
+    border: none;
+    background-color: white;
+    font-family: var(--primary-font);
+    font-size: var(--card-h-font);
+    padding: 5px 15px;
+    border-radius: 4px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: 800;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
 
 .gridView {
     display: flex;
@@ -18,7 +57,13 @@ display: flex;
 align-items: center;
 gap: 10px;
 font-weight: 800;
+
 color: var(--primary-color);
+background-color: white;
+padding: 1px 10px;
+border-radius: 4px;
+/* color: var(--secondary-color); */
+border: 2px solid var(--primary-color);
 }
 
 
@@ -36,10 +81,11 @@ color: var(--primary-color);
   .toggle {
     isolation: isolate;
     position: relative;
-    height: 30px;
-    width: 60px;
+    height: 25px;
+    width: 50px;
     border-radius: 15px;
     border: 2px solid var(--primary-color);
+    /* padding: 10px; */
     overflow: hidden;
     box-shadow: -8px -4px 8px 0px #ffffff,
       8px 4px 12px 0px #d1d9e6,
@@ -52,19 +98,24 @@ color: var(--primary-color);
   }
   
   .indicator {
-    height: 100%;
-    width: 200%;
+    /* height: 100%;
+    width: 200%; */
+    height: 20px;
+    width: 20px;
     /* background: #fd831e; */
     background: var(--primary-color);
+    /* border-radius: 50%; */
     border-radius: 15px;
-    transform: translate3d(-75%, 0, 0);
+    /* transform: translate3d(-75%, 0, 0); */
+    transform: translate3d(5%, 2%, 0);
     transition: transform 0.4s cubic-bezier(0.85, 0.05, 0.18, 1.35);
     box-shadow: -8px -4px 8px 0px #ffffff,
       8px 4px 12px 0px #d1d9e6;
   }
   
   .toggleState:checked ~ .indicator {
-    transform: translate3d(25%, 0, 0);
+    /* transform: translate3d(25%, 0, 0); */
+    transform: translate3d(123%, 2%, 0);
   }
 
 .card {
@@ -187,6 +238,10 @@ color: var(--primary-color);
     font-weight: 500;
     margin: 4px;
     font-size: var(--card-p-font);
+    /* text-wrap: balance; */
+    /* white-space: normal;  */
+    word-break: break-word;
+    /* width: 100%; */
 }
 
 .sub {
@@ -318,6 +373,34 @@ color: var(--primary-color);
         font-size: var(--card-p-font);
         padding: 5px;
         margin: 3px 0;
+    }
+
+    .switches {
+        flex-direction: column-reverse;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .toggler {
+        width: 100%;
+        /* text-align: center; */
+        padding: 3px 10px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        gap: 15px;
+    }
+
+    .nav button {
+        width: 50%;
+        margin: 0;
+        /* font-size: 14px; */
+        text-wrap: nowrap;
     }
 
 }

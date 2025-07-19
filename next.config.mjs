@@ -13,7 +13,10 @@ const nextConfig = {
                 pathname: '/storage/v1/object/public/components/**',
               },
           ],
-      },    
+      },   
+      serverActions: {
+        bodySizeLimit: '9mb', // or '10mb' if you prefer
+      },
 };
 
 export default nextConfig;

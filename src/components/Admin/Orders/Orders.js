@@ -86,6 +86,9 @@ export default function AdminOrders({ orders }) {
     };
 
     return (
+        orders.length === 0 ? (
+                            <Blank content="Nothing to show here" imgSrc={null} />
+                        ) : (
         <div className={styles.ordersContainer}>
             <div className={styles.filter}>
                 <div className={styles.statusFilter}>
@@ -182,5 +185,6 @@ export default function AdminOrders({ orders }) {
                 </table>
             )}
         </div>
+    )
     );
 }
