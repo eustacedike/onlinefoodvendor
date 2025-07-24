@@ -3,9 +3,10 @@
 'use client';
 
 import styles from './editModal.module.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 // import { createClient } from '@/utils/supabase/client'; 
 import { createProduct } from '@/actions/products';
+// import { useRouter } from 'next/navigation'
 
 
 export default function AddModal({ productGroups, setView }) {
@@ -25,6 +26,8 @@ export default function AddModal({ productGroups, setView }) {
         quantity: 0,
         category: "",
     });
+    // const router = useRouter();
+    // const { products, setProducts } = useContext(ProductsContext)
 
 
     const handleSave = async (e) => {
@@ -57,6 +60,9 @@ export default function AddModal({ productGroups, setView }) {
                 category: "",
             })
             setPreviewUrl(null)
+            
+// console.log(result)
+            // router.refresh() 
         }
 
         setLoading(false);

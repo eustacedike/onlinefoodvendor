@@ -7,6 +7,7 @@ import { useState } from "react";
 import AddModal from "./AddModal";
 import EditModal from "./EditModal";
 import DeleteModal from "./DeleteModal";
+import ManageGroups from "./ManageGroups";
 
 export default function AdminProducts({ products, productGroups }) {
     const [isChecked, setIsChecked] = useState(false);
@@ -31,7 +32,11 @@ export default function AdminProducts({ products, productGroups }) {
             <div className={styles.modal}>
                 <AddModal productGroups={productGroups} setView={setView} />
             </div>
-        ) : (
+        )  : view === "managegroups" ? (
+            <div className={styles.modal}>
+                <ManageGroups products={products} productGroups={productGroups} setView={setView} />
+            </div>
+        ): (
             <div className={styles.productsMain}>
 
                 {/* <div className={styles.filter}>
@@ -69,7 +74,7 @@ export default function AdminProducts({ products, productGroups }) {
                             Add New Product
                         </button>
                         <button
-                            onClick={() => { setView('mngGroup') }}>
+                            onClick={() => { setView('managegroups') }}>
                             Manage Groups
                         </button>
                     </div>

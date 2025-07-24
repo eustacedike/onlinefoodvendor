@@ -27,6 +27,9 @@ import { useProductContext } from "@/context/ProductContext";
 
 import AdminDashboard from "./Dashboard/Dashboard";
 
+import UIConfig from "./UI/UIConfig";
+import AdminSocials from "./Socials/Socials";
+
 
 export default function Admin() {
 
@@ -40,13 +43,13 @@ export default function Admin() {
         { name: "Orders", icon: <FaCartArrowDown />, content: <AdminOrders orders={orders}/> },
         { name: "Products", icon: <GiBoxUnpacking />, content: <AdminProducts products={products} productGroups={productGroups}/> },
         // { name: "Product Groups", icon: <FaBoxes />, content: "Details Content" },
-        { name: "UI Elements", icon: <LuMonitorCog />, content: "Elements Content" },
-        { name: "Socials", icon: <SlSocialPintarest />, content: "Social Content" },
+        { name: "UI Elements", icon: <LuMonitorCog />, content: <UIConfig /> },
+        { name: "Socials", icon: <SlSocialPintarest />, content: <AdminSocials/> },
         { name: "Configurations", icon: <FaCogs />, content: "Config" },
 
     ]
 
-    const [currentIndex, setCurrentIndex] = useState(2);
+    const [currentIndex, setCurrentIndex] = useState(3);
 
 
     return (

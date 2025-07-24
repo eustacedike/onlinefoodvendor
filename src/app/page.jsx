@@ -21,8 +21,8 @@ import Advert from "@/components/Advert/Advert";
 import { FaLeaf } from "react-icons/fa";
 import { IoFastFood } from "react-icons/io5";
 
-import bannerImg from "@/public/images/banner1.png";
-import advertImg from "@/public/images/advert.png";
+// import bannerImg from "@/public/images/banner1.png";
+// import advertImg from "@/public/images/advert.png";
 import logo from "@/public/images/logo.png";
 
 
@@ -126,10 +126,10 @@ export default function Home() {
         <Advert AdBanner={components?.find(component => component.id === "banner").value} />
 
         <div className={styles.banner}>
-          <Image
-            src={bannerImg}
+          <img
+            src={components?.find(component => component.id === "heroTwo_img").value}
             alt="banner"
-            fill
+            fill="true"
             // layout='responsive'
             className={styles.bannerImg}
           // style={{ objectFit: 'contain' }}
@@ -137,8 +137,8 @@ export default function Home() {
           />
 
           <div className={styles.bannerText}>
-            <h2>Check out our Signature Unique Dishes!</h2>
-            <p>From classic comforts to unique global flavors, there's something for every craving.</p>
+            <h2>{components?.find(component => component.id === "heroTwo_maintext").value}</h2>
+            <p>{components?.find(component => component.id === "heroTwo_subtext").value}</p>
             <Link href="/menu" className={styles.bannerButton}>Order Now</Link>
           </div>
         </div>

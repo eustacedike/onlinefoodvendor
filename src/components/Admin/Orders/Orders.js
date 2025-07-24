@@ -127,6 +127,8 @@ export default function AdminOrders({ orders }) {
                             <th>Order ID</th>
                             <th>Date</th>
                             <th>Amount</th>
+                            <th>Phone</th>
+                            <th>Mail</th>
                             <th>Status</th>
                             <th>Action</th>
                             <th>Action</th>
@@ -144,6 +146,8 @@ export default function AdminOrders({ orders }) {
                                     }).replace(/ /g, '-')}
                                 </td>
                                 <td>₦{Intl.NumberFormat('en-US').format(order.subtotal + order.delivery + order.vat)}</td>
+                                <td>{order.phone}</td>
+                                <td>{order.owner}</td>
                                 <td
                                     style={{
                                         color: "white",

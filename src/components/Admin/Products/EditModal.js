@@ -6,6 +6,7 @@ import styles from './editModal.module.css';
 import { useState, useEffect } from 'react';
 // import { createClient } from '@/utils/supabase/client'; 
 import { updateProduct } from '@/actions/products';
+// import { useRouter } from 'next/navigation';
 
 
 export default function EditModal({ productGroups, product, setView }) {
@@ -29,6 +30,7 @@ export default function EditModal({ productGroups, product, setView }) {
         category: product.group,
     });
 
+    // const router = useRouter();
 
     const handleUpdate = async (e) => {
         // e.preventDefault();
@@ -49,17 +51,20 @@ export default function EditModal({ productGroups, product, setView }) {
         } else {
             // Success! Handle success case
             setSuccess('Product updated successfully!');
-            setNewProductData({
-                img: product.img,
-                sku: product.sku,
-                name: product.title,
-                description: product.description,
-                price: product.price,
-                discount: product.discount || 0,
-                quantity: product.count,
-                category: product.group,
-            })
-            setPreviewUrl(product.img)
+            // setNewProductData({
+            //     img: product.img,
+            //     sku: product.sku,
+            //     name: product.title,
+            //     description: product.description,
+            //     price: product.price,
+            //     discount: product.discount || 0,
+            //     quantity: product.count,
+            //     category: product.group,
+            // })
+            // setPreviewUrl(product.img)
+            
+
+            // router.refresh() 
         }
 
         setLoading(false);

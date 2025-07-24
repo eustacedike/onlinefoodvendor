@@ -5,9 +5,13 @@
 import styles from './deleteModal.module.css';
 import { useState, useEffect } from 'react';
 import { deleteProduct } from '@/actions/products';
+// import { useRouter } from 'next/navigation';
 
 
 export default function DeleteModal({ product, setDeleteModal }) {
+
+// const router = useRouter()
+
 
     async function handleDelete() {
         const result = await deleteProduct(product.sku)
@@ -19,6 +23,9 @@ export default function DeleteModal({ product, setDeleteModal }) {
             // Handle success
             //   alert('Product deleted successfully!')
             setDeleteModal(-1)
+            
+
+            // router.refresh() 
         }
     }
 

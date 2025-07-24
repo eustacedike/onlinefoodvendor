@@ -1,0 +1,280 @@
+.uiConfigMain {
+    display: grid;
+    justify-content: space-between;
+
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    /* 150px fixed, flexible wrap */
+    gap: 20px;
+    /* align-items:center; */
+    font-family: var(--primary-font);
+}
+
+
+.optionCard {
+    background-color: white;
+    cursor: pointer;
+    height: 120px;
+    text-align: center;
+    border-radius: 2px;
+    /* max-width: 100%; */
+    /* gap: 5%; */
+    margin-bottom: 15px;
+    padding: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    color: var(--secondary-color);
+    transition: 700ms;
+}
+
+.optionCard:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: scale(1.1);
+    /* box-shadow: 0px 2px 4px var(--primary-color-light); */
+
+
+}
+
+.optionCard h1 {
+    font-size: 60px;
+}
+.optionCard h3 {
+    font-size: var(--card-h-font);
+}
+
+.viewContainer {
+    background-color: rgb(255, 255, 255, 0.9);
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 100%;
+    width: 100%;
+}
+
+.backButton {
+    background-color: var(--primary-color);
+    color: white;
+    border: 1px solid transparent;
+    padding: 5px 20px 5px 30px;
+    font-size: var(--card-h-font);
+    font-family: var(--primary-font);
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 800;
+    position: absolute;
+    top: 10px;
+    right: 2vw;
+    /* z-index: 34; */
+    clip-path: polygon(15% 0%, 100% 0, 100% 100%, 15% 100%, 0 50%);
+  }
+
+  .saveButton {
+    background-color: limegreen;
+    color: white;
+    border: 1px solid transparent;
+    padding: 0.5rem 1.5rem;
+    font-size: var(--card-h-font);
+    font-family: var(--primary-font);
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: 800;
+    width: 200px;
+    margin: 20px auto;
+    text-align: center;
+    transition: 400ms ease-in-out;
+  }
+
+.bigContainer {
+    padding: 40px 2vw;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--primary-font);
+
+}
+
+
+.containerOne {
+    display: flex;
+    justify-content: space-between;
+    /* border: 2px solid red; */
+    font-family: var(--primary-font);
+}
+  
+.content {
+    position: relative;
+    width: 30%;
+    /* padding: 10px 20px; */
+    /* z-index: 10; */
+  }
+
+  .contentAlt {
+    position: relative;
+    width: 100%;
+    /* border: 2px solid red; */
+    /* padding: 10px 20px; */
+    /* z-index: 10; */
+  }
+  
+  .remove {
+  background-color: white;
+     cursor: pointer;
+     position: absolute;
+     z-index: 17;
+     top: 15px;
+     right: 20px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+  }
+
+/*   
+  .labelTitle {
+    display: block;
+    margin-bottom: 5px;
+    font-size: var(--card-h-font);
+    font-weight: 800;
+  }
+   */
+  .subtitle {
+    /* color: #94a3b8; */
+    /* font-size: 0.875rem; */
+  }
+  
+  /* .iconWrapper {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: rgba(6, 182, 212, 0.1);
+  } */
+  
+  .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--primary-color); /* cyan-500 */
+  }
+  
+  .dropzoneGroup {
+    margin-top: 1rem;
+  }
+  
+  .dropzone {
+    position: relative;
+    border: 2px dashed var(--primary-color); /* slate-700 */
+    /* background-color: rgba(15, 23, 42, 0.5); */
+    border-radius: 4px;
+    color: var(--secondary-color);
+    padding: 1rem;
+    transition: border-color 0.3s ease;
+  }
+  
+  /* .card:hover .dropzone {
+    border-color: rgba(6, 182, 212, 0.5); 
+  } */
+  
+  .fileInput {
+    position: absolute;
+    inset: 0;
+    z-index: 50;
+    width: 100%;
+    /* height: 100%; */
+    /* height: 40px; */
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .dropzoneContent {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+  }
+  
+
+  
+  .dropzoneText {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .dropTitle {
+    color: var(--secondary-color);
+    font-weight: 500;
+    font-size: 1rem;
+  }
+  
+  .supportText {
+    font-size: 0.75rem;
+    color: #94a3b8;
+  }
+
+
+  .inputGroup {
+    margin: 15px 0;
+    /* margin-bottom: 30px; */
+
+    display: flex;
+    gap: 15px;
+    /* border: 1px solid green; */
+position: relative;
+/* align-items: center; */
+justify-content: center;
+    /* padding: 0px 6vw; */
+    /* max-width: 500px; */
+}
+
+.inputGroup div {
+    width: 100%;
+    max-width: 500px;
+
+}
+
+  .inputGroup label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: var(--card-h-font);
+    font-weight: 800;
+    /* color: #555; */
+  }
+  
+ .inputGroup textarea {
+    width: 100%;
+    padding: 8px 8px;
+    border: 2px solid var(--primary-color);
+    border-radius: 2px;
+    font-size: var(--card-h-font);
+    margin-bottom: 0px;
+    font-family: var(--primary-font);
+  }
+
+  .error {
+    color: red;
+    margin: 5px 0;
+    text-align: center;
+    font-size: small;
+   }
+   .success {
+    color: limegreen;
+    margin: 5px 0;
+    text-align: center;
+    font-size: var(--card-h-font);
+    font-weight: 800;
+   }
+
+
+  @media (max-width: 700px) {
+
+.containerOne {
+    flex-direction: column;
+    /* justify-content: center; */
+}
+
+.content {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.content .preview, .content .dropzoneGroup {
+    width: 60%;
+}
+   
+    }

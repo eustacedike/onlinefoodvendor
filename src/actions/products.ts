@@ -144,3 +144,83 @@ export async function deleteProduct(sku) {
     return { error: 'Something went wrong' }
   }
 }
+
+export async function addGroup(newGroup) {
+  try {
+    const supabase = createClient()
+
+    // Get groups
+    const { data: group, error: fetchError } = await supabase
+  .from('product_groups')
+  .select('*')
+  .eq('name', newGroup) 
+  // .limit(1)
+
+
+
+  if (!newGroup || newGroup.length === 0) {
+    return { error: "Invalid Name"  }
+  }
+
+    if (group) {
+      return { error: `This category already exists`  }
+      // console.log(group)
+    }
+
+    
+    // Insert into Supabase DB
+    const { error: insertError } = await supabase.from("product_groups").insert([
+      {
+        name: newGroup
+      },
+    ]);
+
+    if (insertError) {
+      console.error('Insert error:', insertError);
+      return { error: "Failed to save." };
+    }
+
+    return { success: true };
+
+  } catch (error) {
+    console.error('insert group error:', error)
+    return { error: 'Something went wrong' }
+  }
+}
+
+
+export async function deleteGroup(id, title) {
+  try {
+    const supabase = createClient()
+
+    // Get products
+    const { data: products, error: productsError } = await supabase
+  .from('products')
+  .select('*')
+  .eq('group', title) 
+  .limit(1)
+
+
+    if (products && products.length > 0) {
+      return { error: "Cannot delete group with products, kindly move the items to another group first"  }
+    }
+
+    
+    // Delete product from database
+    const { error: deleteError } = await supabase
+      .from('product_groups')
+      .delete()
+      .eq('id', id)
+
+    if (deleteError) {
+      return { error: 'Failed to delete group from database' }
+    }
+
+    // revalidatePath('/menu')
+    return { success: true }
+
+  } catch (error) {
+    console.error('Delete product error:', error)
+    return { error: 'Something went wrong' }
+  }
+}
