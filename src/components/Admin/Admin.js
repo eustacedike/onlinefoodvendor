@@ -7,6 +7,8 @@ import { useState } from "react";
 
 import logo from "@/public/images/logo.png";
 
+import { useComponents } from "@/hooks/useComponents";
+
 // icons
 import { AiOutlineDashboard } from "react-icons/ai";
 import { FaCartArrowDown } from "react-icons/fa";
@@ -31,12 +33,15 @@ import UIConfig from "./UI/UIConfig";
 import AdminSocials from "./Socials/Socials";
 
 
+
 export default function Admin() {
 
     const { orders } = useOrderContext();
     const { products, productGroups } = useProductContext();
 
 // console.log(products)
+const { socials, components } = useComponents();
+
 
     const sideBarItems = [
         { name: "Dashboard", icon: <AiOutlineDashboard />, content: <AdminDashboard/> },
@@ -44,12 +49,12 @@ export default function Admin() {
         { name: "Products", icon: <GiBoxUnpacking />, content: <AdminProducts products={products} productGroups={productGroups}/> },
         // { name: "Product Groups", icon: <FaBoxes />, content: "Details Content" },
         { name: "UI Elements", icon: <LuMonitorCog />, content: <UIConfig /> },
-        { name: "Socials", icon: <SlSocialPintarest />, content: <AdminSocials/> },
+        { name: "Socials", icon: <SlSocialPintarest />, content: <AdminSocials socials={socials}/> },
         { name: "Configurations", icon: <FaCogs />, content: "Config" },
 
     ]
 
-    const [currentIndex, setCurrentIndex] = useState(3);
+    const [currentIndex, setCurrentIndex] = useState(0);
 
 
     return (

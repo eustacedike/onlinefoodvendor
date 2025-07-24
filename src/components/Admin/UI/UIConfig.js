@@ -29,7 +29,7 @@ import { updateText } from "@/actions/uiElements";
 export default function UIConfig() {
 
     // console.log(products)
-    const { components, socials } = useComponents();
+    const { components } = useComponents();
     const [currentIndex, setCurrentIndex] = useState(-1);
 
 

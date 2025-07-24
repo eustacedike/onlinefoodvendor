@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "./contact.module.css";
 
 import { useState } from "react";
+import { useComponents } from "@/hooks/useComponents";
 
 import facebookImg from '@/public/images/socials/facebook.png';
 import instagramImg from '@/public/images/socials/instagram.png';
@@ -18,16 +19,18 @@ import youtubeImg from '@/public/images/socials/youtube.png';
 
 export default function Contact() {
 
+    const { socials } = useComponents();
+    const icons = [locationImg, phoneImg, facebookImg, instagramImg, tiktokImg, twitterImg, youtubeImg]
 
-    const socials = [
-        { id: 1, img: instagramImg, title: "Instagram", value: "aebis_menu" },
-        { id: 2, img: facebookImg, title: "Facebook", value: "aebis_menu" },
-        {  id: 3,img: locationImg, title: "Location", value: "13 Yaba, Lagos Mainland" },
-        {  id: 4, img: phoneImg, title: "Phone", value: "070312345678" },
-        { id: 5, img: tiktokImg, title: "Tik Tok", value: "aebis_menu" },
-        { id: 6, img: twitterImg, title: "Twitter", value: "aebis_menu" },
-        { id: 7, img: youtubeImg, title: "YouTube", value: "aebis_menu" },
-    ]
+    // const socials = [
+    //     { id: 1, img: instagramImg, title: "Instagram", value: "aebis_menu" },
+    //     { id: 2, img: facebookImg, title: "Facebook", value: "aebis_menu" },
+    //     {  id: 3,img: locationImg, title: "Location", value: "13 Yaba, Lagos Mainland" },
+    //     {  id: 4, img: phoneImg, title: "Phone", value: "070312345678" },
+    //     { id: 5, img: tiktokImg, title: "Tik Tok", value: "aebis_menu" },
+    //     { id: 6, img: twitterImg, title: "Twitter", value: "aebis_menu" },
+    //     { id: 7, img: youtubeImg, title: "YouTube", value: "aebis_menu" },
+    // ]
 
     const [formData, setFormData] = useState({ fullname: '', email: '', phoneno: "", subject: "", message: '' });
     const [status, setStatus] = useState(null);
@@ -99,12 +102,13 @@ export default function Contact() {
                             status === "Message sent successfully!" ? "limegreen" : "red"
                         }}
                         >sending....</p> */}
-                        {status && <p 
+                    {status && <p
                         className={styles.status}
-                        style={{color: status === "Sending..." ? "var(--primary-color)" : 
-                            status === "Message sent successfully!" ? "limegreen" : "red"
+                        style={{
+                            color: status === "Sending..." ? "var(--primary-color)" :
+                                status === "Message sent successfully!" ? "limegreen" : "red"
                         }}
-                        >{status}</p>}
+                    >{status}</p>}
                     <button type="submit" className={styles.sendButton}>
                         <div className="svg-wrapper-1">
                             <div className="svg-wrapper">
@@ -125,25 +129,23 @@ export default function Contact() {
                         <span>Send</span>
                     </button>
                 </form>
-              
-                
+
+
             </div>
             <div className={styles.socials}>
-            {/* <Image src={instagramImg} alt="alt" fill objectFit="contain" /> */}
-                {socials.map(social => {
-                    return (
-                        <div className={styles.social} key={social.id}>
-                            <div className={styles.imageContainer}>
-                                <Image src={social.img} alt={social.title} fill objectFit="contain" />
-                            </div>
-
-                            <div className={styles.details}>
-                                <h4>{social.title}</h4>
-                                <p>{social.value}</p>
-                            </div>
+                {/* <Image src={instagramImg} alt="alt" fill objectFit="contain" /> */}
+                {socials?.filter(social => social.show).map(social => (
+                    <div className={styles.social} key={social.icon}>
+                        <div className={styles.imageContainer}>
+                            <Image src={icons[social.icon]} alt={social.id} fill objectFit="contain" />
                         </div>
-                    )
-                })}
+
+                        <div className={styles.details}>
+                            <h4>{social.id}</h4>
+                            <p>{social.value}</p>
+                        </div>
+                    </div>
+                ))}
 
 
             </div>

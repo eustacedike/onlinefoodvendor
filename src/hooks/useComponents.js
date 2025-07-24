@@ -26,7 +26,7 @@ export function useComponents() {
       .from('socials')
       .select('*')
 
-    if (componentsError) {
+    if (socialsError) {
       console.error('Error fetching details:', socialsError)
       setSocials(null)
     } else {
